@@ -1,4 +1,4 @@
-# Ardupilot Gazebo Models
+# ArduPilot Gazebo Models
 
 Gazebo models that can be controlled with ArduPilot using the ArduPilot Gazebo plugin
 ([khancyr/ardupilot_gazebo](https://github.com/khancyr/ardupilot_gazebo)).
