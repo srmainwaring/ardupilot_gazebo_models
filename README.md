@@ -3,6 +3,16 @@
 Gazebo models that can be controlled with ArduPilot using the ArduPilot Gazebo plugin
 ([khancyr/ardupilot_gazebo](https://github.com/khancyr/ardupilot_gazebo)).
 
+## Models
+
+### Sawppy with ArduPilot
+
+This is a Gazebo model of [Roger Chen's Sawppy Rover](https://github.com/Roger-random/Sawppy_Rover)
+integrated with ArduPilot.
+
+The model uses the ArduPilot Lua scripting framework to support the custom frame
+and control the 6 wheel motors and 4 steering servos.
+
 ## License
 
 This is free software: you can redistribute it and/or modify
