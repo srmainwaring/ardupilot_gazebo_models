@@ -1,0 +1,290 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+<model name='quadruped_ardupilot'>
+    <pose>0 0 0.21 0 0 0</pose>
+
+    <include>
+        <pose>0 0 0 0 0 0</pose>
+        <uri>model://quadruped</uri>
+    </include>
+
+    <plugin name="ardupilot_plugin" filename="libArduPilotPlugin.so">
+        <!-- Port settings -->
+        <fdm_addr>127.0.0.1</fdm_addr>
+        <fdm_port_in>9002</fdm_port_in>
+        <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+        <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
+        <gazeboXYZToNED>0 0 0 3.141593 0 0</gazeboXYZToNED>
+
+        <!-- Sensors -->
+        <imuName>quadruped_ardupilot::imu_link::imu_sensor</imuName>
+
+        <!-- 
+            SERVO1_FUNCTION 94 (Script 1)
+            SERVO1_MIN 1000
+            SERVO1_MAX 2000
+        -->
+        <control channel="0">
+            <jointName>quadruped_ardupilot::quadruped::coxa_fr_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--            
+            SERVO2_FUNCTION 95 (Script 2)
+            SERVO2_MIN 1000
+            SERVO2_MAX 2000
+        -->
+        <control channel="1">
+            <jointName>quadruped_ardupilot::quadruped::femur_fr_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--            
+            SERVO3_FUNCTION 96 (Script 3)
+            SERVO3_MIN 1000
+            SERVO3_MAX 2000
+        -->
+        <control channel="2">
+            <jointName>quadruped_ardupilot::quadruped::tibia_fr_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>1</p_gain>
+            <i_gain>00</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--            
+            SERVO4_FUNCTION 97 (Script 4)
+            SERVO4_MIN 1000
+            SERVO4_MAX 2000
+        -->
+        <control channel="3">
+            <jointName>quadruped_ardupilot::quadruped::coxa_fl_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--            
+            SERVO5_FUNCTION 98 (Script 5)
+            SERVO5_MIN 1000
+            SERVO5_MAX 2000
+        -->
+        <control channel="4">
+            <jointName>quadruped_ardupilot::quadruped::femur_fl_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--            
+            SERVO6_FUNCTION 99 (Script 6)
+            SERVO6_MIN 1000
+            SERVO6_MAX 2000
+        -->
+        <control channel="5">
+            <jointName>quadruped_ardupilot::quadruped::tibia_fl_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--
+            SERVO7_FUNCTION 100 (Script 7)
+            SERVO7_MIN 1000
+            SERVO7_MAX 2000
+        -->
+        <control channel="6">
+            <jointName>quadruped_ardupilot::quadruped::coxa_bl_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--           
+            SERVO8_FUNCTION 101 (Script 8)
+            SERVO8_MIN 1000
+            SERVO8_MAX 2000
+        -->
+        <control channel="7">
+            <jointName>quadruped_ardupilot::quadruped::femur_bl_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--
+            SERVO9_FUNCTION 102 (Script 9)
+            SERVO9_MIN 1000
+            SERVO9_MAX 2000
+        -->
+        <control channel="8">
+            <jointName>quadruped_ardupilot::quadruped::tibia_bl_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--
+            SERVO10_FUNCTION 103 (Script 10)
+            SERVO10_MIN 1000
+            SERVO10_MAX 2000
+        -->
+        <control channel="9">
+            <jointName>quadruped_ardupilot::quadruped::coxa_br_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--
+            SERVO11_FUNCTION 104 (Script 11)
+            SERVO11_MIN 1000
+            SERVO11_MAX 2000
+        -->
+        <control channel="9">
+            <jointName>quadruped_ardupilot::quadruped::femur_br_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+        <!--
+            SERVO12_FUNCTION 105 (Script 12)
+            SERVO12_MIN 1000
+            SERVO12_MAX 2000
+        -->
+        <control channel="9">
+            <jointName>quadruped_ardupilot::quadruped::tibia_br_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>6.283185</multiplier>
+            <offset>-0.5</offset>
+            <type>POSITION</type>
+            <p_gain>10</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>3.141593</cmd_max>
+            <cmd_min>-3.141593</cmd_min>
+        </control>
+
+
+    </plugin>
+
+    <link name='imu_link'>
+        <inertial>
+            <mass>0.01</mass>
+            <inertia>
+                <ixx>1.66667E-07</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1.66667E-07</iyy>
+                <iyz>0</iyz>
+                <izz>1.66667E-07</izz>
+            </inertia>
+        </inertial>
+        <sensor name="imu_sensor" type="imu">
+            <pose>0 0 0 3.141593 0 0</pose>
+            <always_on>1</always_on>
+            <update_rate>1000.0</update_rate>
+        </sensor>
+    </link>
+
+    <joint name='imu_joint' type='fixed'>
+        <child>imu_link</child>
+        <parent>quadruped_ardupilot::quadruped::base_link</parent>
+    </joint>
+
+</model>
+</sdf>

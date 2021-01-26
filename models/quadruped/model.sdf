@@ -3,14 +3,14 @@
     <link name='base_link'>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
-        <mass>0.1</mass>
+        <mass>0.5</mass>
         <inertia>
-          <ixx>0.000106667</ixx>
+          <ixx>0.000533333</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.000240833</iyy>
+          <iyy>0.00120417</iyy>
           <iyz>0</iyz>
-          <izz>0.000240833</izz>
+          <izz>0.00120417</izz>
         </inertia>
       </inertial>
       <collision name='base_link_collision'>
@@ -46,16 +46,16 @@
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
-    <joint name='coxaF_FR' type='revolute'>
-      <pose relative_to='base_link'>0.075 -0.04 0 0 -0 0.785398</pose>
+    <joint name='coxa_bl_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.075 0.04 0 0 -0 2.35619</pose>
       <parent>base_link</parent>
-      <child>coxa_FR</child>
+      <child>coxa_bl_link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-3.142</lower>
-          <upper>3.142</upper>
-          <effort>1000</effort>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
         <dynamics>
@@ -63,11 +63,19 @@
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
       </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
     </joint>
-    <link name='coxa_FR'>
-      <pose relative_to='coxaF_FR'>0 0 0 0 -0 0</pose>
+    <link name='coxa_bl_link'>
+      <pose relative_to='coxa_bl_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0 0 0 -0 0</pose>
+        <pose>0.015 0 0 0 1.5708 0</pose>
         <mass>0.1</mass>
         <inertia>
           <ixx>1e-05</ixx>
@@ -78,8 +86,8 @@
           <izz>5e-06</izz>
         </inertia>
       </inertial>
-      <collision name='coxa_FR_collision'>
-        <pose>0 0 0 0 -0 0</pose>
+      <collision name='coxa_bl_link_collision'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
         <geometry>
           <cylinder>
             <length>0.03</length>
@@ -95,8 +103,8 @@
           </friction>
         </surface>
       </collision>
-      <visual name='coxa_FR_visual'>
-        <pose>0 0 0 0 -0 0</pose>
+      <visual name='coxa_bl_link_visual'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
         <geometry>
           <cylinder>
             <length>0.03</length>
@@ -110,6 +118,955 @@
           </script>
         </material>
       </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='femur_bl_joint' type='revolute'>
+      <pose relative_to='coxa_bl_link'>0.03 0 0 0 -0 0</pose>
+      <parent>coxa_bl_link</parent>
+      <child>femur_bl_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='femur_bl_link'>
+      <pose relative_to='femur_bl_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>6.27083e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>6.27083e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='femur_bl_link_collision'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='femur_bl_link_visual'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='tibia_bl_joint' type='revolute'>
+      <pose relative_to='femur_bl_link'>0.085 0 0 0 -0 0</pose>
+      <parent>femur_bl_link</parent>
+      <child>tibia_bl_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='tibia_bl_link'>
+      <pose relative_to='tibia_bl_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.083333 0 -0 0</pose>
+        <mass>0.15</mass>
+        <inertia>
+          <ixx>0.000270917</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000270917</iyy>
+          <iyz>0</iyz>
+          <izz>1.3e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='tibia_bl_link_collision'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='tibia_bl_link_fixed_joint_lump__foot_bl_link_collision_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='tibia_bl_link_visual'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='tibia_bl_link_fixed_joint_lump__foot_bl_link_visual_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='coxa_br_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.075 -0.04 0 0 0 -2.35619</pose>
+      <parent>base_link</parent>
+      <child>coxa_br_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='coxa_br_link'>
+      <pose relative_to='coxa_br_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>1e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='coxa_br_link_collision'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='coxa_br_link_visual'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='femur_br_joint' type='revolute'>
+      <pose relative_to='coxa_br_link'>0.03 0 0 0 -0 0</pose>
+      <parent>coxa_br_link</parent>
+      <child>femur_br_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='femur_br_link'>
+      <pose relative_to='femur_br_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>6.27083e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>6.27083e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='femur_br_link_collision'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='femur_br_link_visual'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='tibia_br_joint' type='revolute'>
+      <pose relative_to='femur_br_link'>0.085 0 0 0 -0 0</pose>
+      <parent>femur_br_link</parent>
+      <child>tibia_br_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='tibia_br_link'>
+      <pose relative_to='tibia_br_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.083333 0 -0 0</pose>
+        <mass>0.15</mass>
+        <inertia>
+          <ixx>0.000270917</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000270917</iyy>
+          <iyz>0</iyz>
+          <izz>1.3e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='tibia_br_link_collision'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='tibia_br_link_fixed_joint_lump__foot_br_link_collision_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='tibia_br_link_visual'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='tibia_br_link_fixed_joint_lump__foot_br_link_visual_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='coxa_fl_joint' type='revolute'>
+      <pose relative_to='base_link'>0.075 0.04 0 0 -0 0.785398</pose>
+      <parent>base_link</parent>
+      <child>coxa_fl_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='coxa_fl_link'>
+      <pose relative_to='coxa_fl_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>1e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='coxa_fl_link_collision'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='coxa_fl_link_visual'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='femur_fl_joint' type='revolute'>
+      <pose relative_to='coxa_fl_link'>0.03 0 0 0 -0 0</pose>
+      <parent>coxa_fl_link</parent>
+      <child>femur_fl_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='femur_fl_link'>
+      <pose relative_to='femur_fl_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>6.27083e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>6.27083e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='femur_fl_link_collision'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='femur_fl_link_visual'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='tibia_fl_joint' type='revolute'>
+      <pose relative_to='femur_fl_link'>0.085 0 0 0 -0 0</pose>
+      <parent>femur_fl_link</parent>
+      <child>tibia_fl_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='tibia_fl_link'>
+      <pose relative_to='tibia_fl_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.083333 0 -0 0</pose>
+        <mass>0.15</mass>
+        <inertia>
+          <ixx>0.000270917</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000270917</iyy>
+          <iyz>0</iyz>
+          <izz>1.3e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='tibia_fl_link_collision'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='tibia_fl_link_fixed_joint_lump__foot_fl_link_collision_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='tibia_fl_link_visual'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='tibia_fl_link_fixed_joint_lump__foot_fl_link_visual_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='coxa_fr_joint' type='revolute'>
+      <pose relative_to='base_link'>0.075 -0.04 0 0 0 -0.785398</pose>
+      <parent>base_link</parent>
+      <child>coxa_fr_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='coxa_fr_link'>
+      <pose relative_to='coxa_fr_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>1e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='coxa_fr_link_collision'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='coxa_fr_link_visual'>
+        <pose>0.015 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.03</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='femur_fr_joint' type='revolute'>
+      <pose relative_to='coxa_fr_link'>0.03 0 0 0 -0 0</pose>
+      <parent>coxa_fr_link</parent>
+      <child>femur_fr_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='femur_fr_link'>
+      <pose relative_to='femur_fr_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>6.27083e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>6.27083e-05</iyy>
+          <iyz>0</iyz>
+          <izz>5e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='femur_fr_link_collision'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='femur_fr_link_visual'>
+        <pose>0.0425 0 0 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.085</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/White</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='tibia_fr_joint' type='revolute'>
+      <pose relative_to='femur_fr_link'>0.085 0 0 0 -0 0</pose>
+      <parent>femur_fr_link</parent>
+      <child>tibia_fr_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='tibia_fr_link'>
+      <pose relative_to='tibia_fr_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 -0.083333 0 -0 0</pose>
+        <mass>0.15</mass>
+        <inertia>
+          <ixx>0.000270917</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000270917</iyy>
+          <iyz>0</iyz>
+          <izz>1.3e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='tibia_fr_link_collision'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='tibia_fr_link_fixed_joint_lump__foot_fr_link_collision_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='tibia_fr_link_visual'>
+        <pose>0 0 -0.0625 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.125</length>
+            <radius>0.01</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='tibia_fr_link_fixed_joint_lump__foot_fr_link_visual_1'>
+        <pose>0 0 -0.125 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.02</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
       <gravity>1</gravity>
       <velocity_decay/>
     </link>
