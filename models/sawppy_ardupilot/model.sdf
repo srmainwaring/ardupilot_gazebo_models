@@ -9,10 +9,9 @@
     </include>
 
     <plugin name="ardupilot_plugin" filename="libArduPilotPlugin.so">
-        <!-- MAVLink / port settings -->
+        <!-- Port settings -->
         <fdm_addr>127.0.0.1</fdm_addr>
         <fdm_port_in>9002</fdm_port_in>
-        <fdm_port_out>9003</fdm_port_out>
         <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
 
         <!-- Coordinate frames required for APM
@@ -36,8 +35,7 @@
 
         <!-- Wheel servos -->
 
-        <!-- SRV_Channels[0]
-
+        <!--
             SERVO1_FUNCTION 94 (Script 1)
             SERVO1_MIN 1000
             SERVO1_MAX 2000
@@ -57,8 +55,7 @@
             <cmd_min>-1.25</cmd_min>
         </control>
 
-        <!-- SRV_Channels[1]
-            
+        <!--           
             SERVO2_FUNCTION 95 (Script 2)
             SERVO2_MIN 1000
             SERVO2_MAX 2000
@@ -78,11 +75,10 @@
             <cmd_min>-1.25</cmd_min>
         </control>
 
-        <!-- SRV_Channels[2]
-            
-            SERVO2_FUNCTION 96 (Script 3)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--
+            SERVO3_FUNCTION 96 (Script 3)
+            SERVO3_MIN 1000
+            SERVO3_MAX 2000
         -->
         <control channel="2">
             <jointName>sawppy_ardupilot::sawppy::mid_left_wheel_joint</jointName>
@@ -99,11 +95,10 @@
             <cmd_min>-1.25</cmd_min>
         </control>
 
-        <!-- SRV_Channels[3]
-            
-            SERVO2_FUNCTION 97 (Script 4)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--            
+            SERVO4_FUNCTION 97 (Script 4)
+            SERVO4_MIN 1000
+            SERVO4_MAX 2000
         -->
         <control channel="3">
             <jointName>sawppy_ardupilot::sawppy::mid_right_wheel_joint</jointName>
@@ -120,11 +115,10 @@
             <cmd_min>-1.25</cmd_min>
         </control>
 
-        <!-- SRV_Channels[4]
-            
-            SERVO2_FUNCTION 98 (Script 5)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--            
+            SERVO5_FUNCTION 98 (Script 5)
+            SERVO5_MIN 1000
+            SERVO5_MAX 2000
         -->
         <control channel="4">
             <jointName>sawppy_ardupilot::sawppy::back_left_wheel_joint</jointName>
@@ -141,11 +135,10 @@
             <cmd_min>-1.25</cmd_min>
         </control>
 
-        <!-- SRV_Channels[5]
-            
-            SERVO2_FUNCTION 99 (Script 6)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--            
+            SERVO6_FUNCTION 99 (Script 6)
+            SERVO6_MIN 1000
+            SERVO6_MAX 2000
         -->
         <control channel="5">
             <jointName>sawppy_ardupilot::sawppy::back_right_wheel_joint</jointName>
@@ -164,11 +157,10 @@
 
         <!-- Steer servos -->
 
-        <!-- SRV_Channels[6]
-            
-            SERVO2_FUNCTION 100 (Script 7)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--
+            SERVO7_FUNCTION 100 (Script 7)
+            SERVO7_MIN 1000
+            SERVO7_MAX 2000
         -->
         <control channel="6">
             <jointName>sawppy_ardupilot::sawppy::front_left_steer_joint</jointName>
@@ -185,11 +177,10 @@
             <cmd_min>-3.141593</cmd_min>
         </control>
 
-        <!-- SRV_Channels[7]
-            
-            SERVO2_FUNCTION 101 (Script 8)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--            
+            SERVO8_FUNCTION 101 (Script 8)
+            SERVO8_MIN 1000
+            SERVO8_MAX 2000
         -->
         <control channel="7">
             <jointName>sawppy_ardupilot::sawppy::front_right_steer_joint</jointName>
@@ -206,11 +197,10 @@
             <cmd_min>-3.141593</cmd_min>
         </control>
 
-        <!-- SRV_Channels[8]
-            
-            SERVO2_FUNCTION 102 (Script 9)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--           
+            SERVO9_FUNCTION 102 (Script 9)
+            SERVO9_MIN 1000
+            SERVO9_MAX 2000
         -->
         <control channel="8">
             <jointName>sawppy_ardupilot::sawppy::back_left_steer_joint</jointName>
@@ -227,11 +217,10 @@
             <cmd_min>-3.141593</cmd_min>
         </control>
 
-        <!-- SRV_Channels[9]
-            
-            SERVO2_FUNCTION 103 (Script 10)
-            SERVO2_MIN 1000
-            SERVO2_MAX 2000
+        <!--            
+            SERVO10_FUNCTION 103 (Script 10)
+            SERVO10_MIN 1000
+            SERVO10_MAX 2000
         -->
         <control channel="9">
             <jointName>sawppy_ardupilot::sawppy::back_right_steer_joint</jointName>
@@ -250,7 +239,7 @@
 
     </plugin>
 
-    <!-- NOTE: cannot find the sensor on sawppy?? -->
+    <!-- NOTE: cannot find the sensor on the sawppy model?? -->
     <link name='imu_link'>
         <inertial>
             <mass>0.01</mass>
@@ -264,7 +253,6 @@
             </inertia>
         </inertial>
         <sensor name="imu_sensor" type="imu">
-            <!-- <pose>0 0 0 3.141593 0 0</pose> -->
             <pose>0 0 0 3.141593 0 0</pose>
             <always_on>1</always_on>
             <update_rate>1000.0</update_rate>
@@ -275,7 +263,5 @@
         <child>imu_link</child>
         <parent>sawppy_ardupilot::sawppy::base_link</parent>
     </joint>
-
-
 </model>
 </sdf>
