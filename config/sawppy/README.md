@@ -19,14 +19,13 @@ Ardupilot Gazebo installed.
 Copy the Lua scripts to the SITL scripts folder:
 
 ```bash
-# assume we are in the ardupilot_gazebo project directory
-$ cd ./models/sawppy_ardupilot/ardupilot/scripts
+# Assume we are in the ardupilot_gazebo project directory
 
 # EITHER copy the Lua scripts to your ardupilot project directory
-$ cp sawppy_motor_driver.lua $ARDUPILOT_HOME/scripts
+$ cp ./config/sawppy/scripts/sawppy_motor_driver.lua $ARDUPILOT_HOME/scripts
 
 # OR for instance on macOS SITL looks for Lua scripts in $HOME/scripts
-$ cp sawppy_motor_driver.lua $HOME/scripts
+$ cp ./config/sawppy/scripts/sawppy_motor_driver.lua $HOME/scripts
 ```
 
 ### Start Gazebo
@@ -49,7 +48,8 @@ $ sim_vehicle.py --vehicle=Rover --frame=gazebo-rover --aircraft=sawppy --consol
 
 Enable Lua scripting by setting `SCR_ENABLE = 1`, refresh parameters and restart. 
 
-A full parameter set for the rover is saved in `models/sawppy_ardupilot/ardupilot/params/mav.parm`.  The key parameters are:
+A full parameter set for the rover is saved in `./config/sawppy/params/sawppy.parm`.
+The key parameters are:
 
 **Scripting**
 
@@ -66,52 +66,42 @@ SCR_HEAP_SIZE    65536
 SERVO1_FUNCTION  94
 SERVO1_MAX       2000
 SERVO1_MIN       1000
-SERVO1_REVERSED  0
 SERVO1_TRIM      1500
 SERVO2_FUNCTION  95
 SERVO2_MAX       2000
 SERVO2_MIN       1000
-SERVO2_REVERSED  0
 SERVO2_TRIM      1500
 SERVO3_FUNCTION  96
 SERVO3_MAX       2000
 SERVO3_MIN       1000
-SERVO3_REVERSED  0
 SERVO3_TRIM      1500
 SERVO4_FUNCTION  97
 SERVO4_MAX       2000
 SERVO4_MIN       1000
-SERVO4_REVERSED  0
 SERVO4_TRIM      1500
 SERVO5_FUNCTION  98
 SERVO5_MAX       2000
 SERVO5_MIN       1000
-SERVO5_REVERSED  0
 SERVO5_TRIM      1500
 SERVO6_FUNCTION  99
 SERVO6_MAX       2000
 SERVO6_MIN       1000
-SERVO6_REVERSED  0
 SERVO6_TRIM      1500
 SERVO7_FUNCTION  100
 SERVO7_MAX       2000
 SERVO7_MIN       1000
-SERVO7_REVERSED  0
 SERVO7_TRIM      1500
 SERVO8_FUNCTION  101
 SERVO8_MAX       2000
 SERVO8_MIN       1000
-SERVO8_REVERSED  0
 SERVO8_TRIM      1500
 SERVO9_FUNCTION  102
 SERVO9_MAX       2000
 SERVO9_MIN       1000
-SERVO9_REVERSED  0
 SERVO9_TRIM      1500
 SERVO10_FUNCTION 103
 SERVO10_MAX      2000
 SERVO10_MIN      1000
-SERVO10_REVERSED 0
 SERVO10_TRIM     1500
 
 # Servos 11 and 12 are not used but are set to Throttle Left and Throttle Right
@@ -120,13 +110,22 @@ SERVO10_TRIM     1500
 SERVO11_FUNCTION 73
 SERVO11_MAX      2000
 SERVO11_MIN      1000
-SERVO11_REVERSED 0
 SERVO11_TRIM     1500
 SERVO12_FUNCTION 74
 SERVO12_MAX      2000
 SERVO12_MIN      1000
-SERVO12_REVERSED 0
 SERVO12_TRIM     1500
+```
+
+**RC**
+
+```bash
+RC1_MAX          2000
+RC1_MIN          1000
+RC1_TRIM         1500
+RC3_MAX          2000
+RC3_MIN          1000
+RC3_TRIM         1500
 ```
 
 **Tuning**
@@ -136,6 +135,7 @@ SERVO12_TRIM     1500
 ARMING_RUDDER    1
 
 # Speed control - the maximum vehicle speed is approx 0.38 m/s
+ATC_SPEED_P      0.100000
 CRUISE_SPEED     0.270000
 CRUISE_THROTTLE  70
 MOT_SPD_SCA_BASE 0.000000
@@ -148,12 +148,14 @@ ATC_STR_RAT_FF   1.500000
 ATC_STR_RAT_I    0.100000
 ATC_STR_RAT_MAX  90.000000
 ATC_STR_RAT_P    0.500000
+GCS_PID_MASK     1
 
 # Navigation L1 control 
 NAVL1_DAMPING    1.000000
 NAVL1_PERIOD     10.000000
 
 # Waypoints and pivot turns
+WP_OVERSHOOT     0.500000
 WP_PIVOT_ANGLE   90
 WP_PIVOT_RATE    80
 WP_RADIUS        0.500000
