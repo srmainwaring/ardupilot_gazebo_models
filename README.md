@@ -10,8 +10,14 @@ Gazebo models that can be controlled with ArduPilot using the ArduPilot Gazebo p
 This is a Gazebo model of [Roger Chen's Sawppy Rover](https://github.com/Roger-random/Sawppy_Rover)
 integrated with ArduPilot.
 
-The model uses the ArduPilot Lua scripting framework to support the custom frame
+The controller for the model uses the ArduPilot Lua scripting framework to support the custom frame
 and control the 6 wheel motors and 4 steering servos.
+
+### Quadruped with ArduPilot
+
+This is a Gazebo model of a Quadruped robot developed by Ashvath in this project: [GSoC 2020: Walking Robot Support For Ardupilot](https://discuss.ardupilot.org/t/gsoc-2020-walking-robot-support-for-ardupilot/57080).
+
+The controller for this model also uses the ArduPilot Lua scripting framewortk.
 
 ## License
 
