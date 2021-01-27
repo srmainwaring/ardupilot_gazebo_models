@@ -53,8 +53,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -128,8 +128,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -203,8 +203,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -265,7 +265,10 @@
             <ode/>
           </contact>
           <friction>
-            <ode/>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
           </friction>
         </surface>
       </collision>
@@ -309,8 +312,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -384,8 +387,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -459,8 +462,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -521,7 +524,10 @@
             <ode/>
           </contact>
           <friction>
-            <ode/>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
           </friction>
         </surface>
       </collision>
@@ -565,8 +571,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -640,8 +646,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -715,8 +721,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -777,7 +783,10 @@
             <ode/>
           </contact>
           <friction>
-            <ode/>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
           </friction>
         </surface>
       </collision>
@@ -821,8 +830,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -896,8 +905,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -971,8 +980,8 @@
       <axis>
         <xyz>0 1 0</xyz>
         <limit>
-          <lower>-0.785398</lower>
-          <upper>0.785398</upper>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
           <effort>100</effort>
           <velocity>0.5</velocity>
         </limit>
@@ -1033,7 +1042,10 @@
             <ode/>
           </contact>
           <friction>
-            <ode/>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
           </friction>
         </surface>
       </collision>

@@ -61,6 +61,45 @@
       <uri>model://ground_plane</uri>
     </include>
 
+    <!--
+    <model name="stand">
+        <pose>0 0 0.2 0 0 0</pose>
+        <static>true</static>
+        <link name="base_link">
+            <collision name="base_collision">
+                <geometry>
+                    <cylinder>
+                        <length>0.01</length>
+                        <radius>0.030</radius>
+                    </cylinder>
+                </geometry>
+                <surface>
+                    <friction>
+                        <ode>
+                            <mu>10000</mu>
+                            <mu2>10000</mu2>
+                        </ode>
+                    </friction>
+                </surface>
+            </collision>
+            <visual name="base_visual">
+                <geometry>
+                    <cylinder>
+                        <length>0.01</length>
+                        <radius>0.030</radius>
+                    </cylinder>
+                </geometry>
+                <material>
+                    <script>
+                        <name>Gazebo/Black</name>
+                        <uri>file://media/materials/scripts/gazebo.material</uri>
+                    </script>
+                </material>
+            </visual>
+        </link>
+    </model>
+    -->
+
     <include>
       <uri>model://quadruped_ardupilot</uri>
     </include>
