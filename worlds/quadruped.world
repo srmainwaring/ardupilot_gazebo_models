@@ -45,14 +45,14 @@
         <max_step_size>0.001</max_step_size>
         <ode>
             <solver>
-                <type>quick</type>
+                <type>world</type>
                 <min_step_size>0.0001</min_step_size>
             </solver>
-            <constraints> -->
-                <cfm>0.001</cfm>
-                <erp>0.02</erp>
+            <constraints>
+                <cfm>0.002</cfm>
+                <erp>0.03</erp>
                 <contact_max_correcting_vel>100.0</contact_max_correcting_vel>
-                <contact_surface_layer>0.001</contact_surface_layer>
+                <contact_surface_layer>0.0001</contact_surface_layer>
             </constraints>
         </ode>
     </physics>
