@@ -22,12 +22,12 @@
 -- CAUTION: This script should only be used with ArduPilot Rover's firmware
 
 
-local FRAME_LEN = 80    -- frame length in mm
-local FRAME_WIDTH = 150 -- frame width in mm
+local FRAME_LEN = 177   -- frame length in mm
+local FRAME_WIDTH = 101 -- frame width in mm
 
-local COXA_LEN = 30     -- distance (in mm) from coxa (aka hip) servo to femur servo
-local FEMUR_LEN = 85    -- distance (in mm) from femur servo to tibia servo
-local TIBIA_LEN = 125   -- distance (in mm) from tibia servo to foot
+local COXA_LEN = 28.5   -- distance (in mm) from coxa (aka hip) servo to femur servo
+local FEMUR_LEN = 76.2  -- distance (in mm) from femur servo to tibia servo
+local TIBIA_LEN = 102   -- distance (in mm) from tibia servo to foot
 
 --body position and rotation parameters
 local body_rot_max = 10 -- body rotation maximum for any individual axis
