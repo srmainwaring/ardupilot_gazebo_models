@@ -25,46 +25,6 @@
             SERVO1_FUNCTION 94 (Script 1)
         -->
         <control channel="0">
-            <jointName>steer_bot_ardupilot::steer_bot::front_left_steer_joint</jointName>
-            <useForce>1</useForce>
-            <multiplier>1.570796327</multiplier>
-            <offset>-0.5</offset>
-            <servo_min>1000</servo_min>
-            <servo_max>2000</servo_max>
-            <type>POSITION</type>
-            <p_gain>10</p_gain>
-            <i_gain>0</i_gain>
-            <d_gain>0</d_gain>
-            <i_max>1</i_max>
-            <i_min>0</i_min>
-            <cmd_max>0.785398163</cmd_max>
-            <cmd_min>-0.785398163</cmd_min>
-        </control>
-
-        <!--           
-            SERVO2_FUNCTION 95 (Script 2)
-        -->
-        <control channel="1">
-            <jointName>steer_bot_ardupilot::steer_bot::front_right_steer_joint</jointName>
-            <useForce>1</useForce>
-            <multiplier>1.570796327</multiplier>
-            <offset>-0.5</offset>
-            <servo_min>1000</servo_min>
-            <servo_max>2000</servo_max>
-            <type>POSITION</type>
-            <p_gain>10</p_gain>
-            <i_gain>0</i_gain>
-            <d_gain>0</d_gain>
-            <i_max>1</i_max>
-            <i_min>0</i_min>
-            <cmd_max>0.785398163</cmd_max>
-            <cmd_min>-0.785398163</cmd_min>
-        </control>
-
-        <!--           
-            SERVO3_FUNCTION 96 (Script 3)
-        -->
-        <control channel="2">
             <jointName>steer_bot_ardupilot::steer_bot::rear_left_wheel_joint</jointName>
             <useForce>1</useForce>
             <multiplier>100.0</multiplier>
@@ -82,9 +42,9 @@
         </control>
 
         <!--           
-            SERVO4_FUNCTION 97 (Script 4)
+            SERVO2_FUNCTION 95 (Script 2)
         -->
-        <control channel="3">
+        <control channel="1">
             <jointName>steer_bot_ardupilot::steer_bot::rear_right_wheel_joint</jointName>
             <useForce>1</useForce>
             <multiplier>100.0</multiplier>
@@ -100,6 +60,48 @@
             <cmd_max>50.0</cmd_max>
             <cmd_min>-50.0</cmd_min>
         </control>
+        
+        <!--           
+            SERVO3_FUNCTION 96 (Script 3)
+        -->
+        <control channel="2">
+            <jointName>steer_bot_ardupilot::steer_bot::front_left_steer_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>1.570796327</multiplier>
+            <offset>-0.5</offset>
+            <servo_min>1000</servo_min>
+            <servo_max>2000</servo_max>
+            <type>POSITION</type>
+            <p_gain>2.0</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0.1</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>0.785398163</cmd_max>
+            <cmd_min>-0.785398163</cmd_min>
+        </control>
+
+        <!--           
+            SERVO4_FUNCTION 97 (Script 4)
+        -->
+        <control channel="3">
+            <jointName>steer_bot_ardupilot::steer_bot::front_right_steer_joint</jointName>
+            <useForce>1</useForce>
+            <multiplier>1.570796327</multiplier>
+            <offset>-0.5</offset>
+            <servo_min>1000</servo_min>
+            <servo_max>2000</servo_max>
+            <type>POSITION</type>
+            <p_gain>2.0</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0.1</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>0.785398163</cmd_max>
+            <cmd_min>-0.785398163</cmd_min>
+        </control>
+
+
     </plugin>
 
     <link name='imu_link'>
