@@ -72,7 +72,7 @@
             <servo_min>1000</servo_min>
             <servo_max>2000</servo_max>
             <type>POSITION</type>
-            <p_gain>2.0</p_gain>
+            <p_gain>10.0</p_gain>
             <i_gain>0</i_gain>
             <d_gain>0.1</d_gain>
             <i_max>1</i_max>
@@ -92,7 +92,7 @@
             <servo_min>1000</servo_min>
             <servo_max>2000</servo_max>
             <type>POSITION</type>
-            <p_gain>2.0</p_gain>
+            <p_gain>10.0</p_gain>
             <i_gain>0</i_gain>
             <d_gain>0.1</d_gain>
             <i_max>1</i_max>
