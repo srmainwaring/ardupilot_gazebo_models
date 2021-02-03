@@ -1,0 +1,86 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+<model name='turtlebot_ardupilot'>
+    <pose>0 0 0 0 0 0</pose>
+
+    <include>
+        <pose>0 0 0 0 0 0</pose>
+        <uri>model://turtlebot</uri>
+    </include>
+
+    <plugin name="ardupilot_plugin" filename="libArduPilotPlugin.so">
+        <!-- Port settings -->
+        <fdm_addr>127.0.0.1</fdm_addr>
+        <fdm_port_in>9002</fdm_port_in>
+        <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+        <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
+        <gazeboXYZToNED>0 0 0 3.141593 0 0</gazeboXYZToNED>
+
+        <!-- Sensors -->
+        <imuName>turtlebot_ardupilot::imu_link::imu_sensor</imuName>
+
+        <!-- Control / channels -->
+
+        <!-- SERVO1_FUNCTION 73 (ThrottleLeft) -->
+        <control channel="0">
+            <jointName>turtlebot::create::left_wheel</jointName>
+            <useForce>1</useForce>
+            <multiplier>34.2</multiplier>
+            <offset>-0.5</offset>
+            <servo_min>1000</servo_min>
+            <servo_max>2000</servo_max>
+            <type>VELOCITY</type>
+            <p_gain>1</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>17.1</cmd_max>
+            <cmd_min>-17.1</cmd_min>
+        </control>
+
+        <!-- SERVO2_FUNCTION 74 (ThrottleRight) -->
+        <control channel="1">
+            <jointName>turtlebot::create::right_wheel</jointName>
+            <useForce>1</useForce>
+            <multiplier>34.2</multiplier>
+            <offset>-0.5</offset>
+            <servo_min>1000</servo_min>
+            <servo_max>2000</servo_max>
+            <type>VELOCITY</type>
+            <p_gain>1</p_gain>
+            <i_gain>0</i_gain>
+            <d_gain>0</d_gain>
+            <i_max>1</i_max>
+            <i_min>0</i_min>
+            <cmd_max>17.1</cmd_max>
+            <cmd_min>-17.1</cmd_min>
+        </control>
+
+    </plugin>
+
+    <link name='imu_link'>
+        <inertial>
+            <mass>0.01</mass>
+            <inertia>
+                <ixx>1.66667E-07</ixx>
+                <ixy>0</ixy>
+                <ixz>0</ixz>
+                <iyy>1.66667E-07</iyy>
+                <iyz>0</iyz>
+                <izz>1.66667E-07</izz>
+            </inertia>
+        </inertial>
+        <sensor name="imu_sensor" type="imu">
+            <pose>0 0 0 3.141593 0 0</pose>
+            <always_on>1</always_on>
+            <update_rate>1000.0</update_rate>
+        </sensor>
+    </link>
+
+    <joint name='imu_joint' type='fixed'>
+        <child>imu_link</child>
+        <parent>turtlebot_ardupilot::turtlebot::create::base</parent>
+    </joint>
+</model>
+</sdf>
