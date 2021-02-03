@@ -1,4 +1,3 @@
-<?xml version="1.0" ?>
 <sdf version='1.7'>
   <model name='steer_bot'>
     <link name='base_link'>
@@ -54,8 +53,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-3.14159</lower>
-          <upper>3.14159</upper>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
           <effort>10</effort>
           <velocity>5</velocity>
         </limit>
@@ -186,8 +185,8 @@
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
-          <lower>-3.14159</lower>
-          <upper>3.14159</upper>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
           <effort>10</effort>
           <velocity>5</velocity>
         </limit>
