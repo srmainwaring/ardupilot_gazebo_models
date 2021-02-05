@@ -104,6 +104,7 @@
 
     </plugin>
 
+    <!-- IMU -->
     <link name='imu_link'>
         <inertial>
             <mass>0.01</mass>
@@ -123,9 +124,16 @@
         </sensor>
     </link>
 
-    <joint name='imu_joint' type='fixed'>
+    <joint name='imu_joint' type='revolute'>
         <child>imu_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+                <lower>0</lower>
+                <upper>0</upper>
+            </limit>
+        </axis>
     </joint>
 </model>
 </sdf>
