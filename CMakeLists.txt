@@ -12,3 +12,4 @@ find_package(gazebo REQUIRED)
 install(DIRECTORY models DESTINATION ${GAZEBO_MODEL_PATH}/..)
 install(DIRECTORY worlds DESTINATION ${GAZEBO_MODEL_PATH}/..)
 install(DIRECTORY media DESTINATION ${GAZEBO_MEDIA_PATH}/..)
+
