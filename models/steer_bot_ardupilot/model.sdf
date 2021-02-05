@@ -41,7 +41,7 @@
             <cmd_min>-50.0</cmd_min>
         </control>
 
-        <!--           
+        <!--
             SERVO2_FUNCTION 95 (Script 2)
         -->
         <control channel="1">
@@ -61,7 +61,7 @@
             <cmd_min>-50.0</cmd_min>
         </control>
         
-        <!--           
+        <!--
             SERVO3_FUNCTION 96 (Script 3)
         -->
         <control channel="2">
@@ -81,7 +81,7 @@
             <cmd_min>-0.785398163</cmd_min>
         </control>
 
-        <!--           
+        <!--
             SERVO4_FUNCTION 97 (Script 4)
         -->
         <control channel="3">
@@ -101,6 +101,97 @@
             <cmd_min>-0.785398163</cmd_min>
         </control>
 
+        <!-- Sonar sensor -->
+        <!-- 
+            Types
+            =====
+
+            Use the same type identifier as used in the sensor
+            SDF element:
+
+            http://sdformat.org/spec?ver=1.7&elem=sensor
+            type = air_pressure, altimeter, camera, depth_camera,
+            force_torque, gps, lidar, magnetometer, sonar  
+
+            Topics
+            ======
+
+            The topic will be prefixed with the gazebo namespace
+            and model name:
+            
+            ~/<model_name>/
+            
+            e.g. /gazebo/default/steer_bot_ardupilot/
+
+            Id
+            ==
+
+            Together the sensor::type and sensor::id element are used
+            to link the sensor with the ArduPilot parameter group that
+            defines the sensor properties such as its position and orientation
+            in the frame.
+         -->
+         <!-- 
+            RNGFND1_TYPE = 100 (SITL)
+            RNGFND1_TYPE = 0 (LINEAR)
+            RNGFND1_MIN_CM = 20 (0.2 m)
+            RNGFND1_MAX_CM = 700 (7.0 m)
+            RNGFND1_POS_X = 0.25
+            RNGFND1_POS_Y = 0.0
+            RNGFND1_POS_Z = 0.05
+            RNGFND1_ORIENT = 0 (FORWARD)
+        -->
+        <sensor>
+            <type>sonar</type>
+            <id>1</id>
+            <topic>sonar_forward/sonar_link/sensor/sonar</topic>
+        </sensor>
+
+         <!-- 
+            RNGFND1_TYPE = 100 (SITL)
+            RNGFND1_TYPE = 0 (LINEAR)
+            RNGFND1_MIN_CM = 20 (0.2 m)
+            RNGFND1_MAX_CM = 700 (7.0 m)
+            RNGFND1_POS_X = 0.25
+            RNGFND1_POS_Y = 0.15
+            RNGFND1_POS_Z = 0.05
+            RNGFND1_ORIENT = 7 (FORWARD_LEFT)
+        -->
+        <sensor>
+            <type>sonar</type>
+            <id>2</id>
+            <topic>sonar_forward_left/sonar_link/sensor/sonar</topic>
+        </sensor>
+        <sensor>
+            <type>sonar</type>
+            <id>3</id>
+            <topic>sonar_left/sonar_link/sensor/sonar</topic>
+        </sensor>
+        <sensor>
+            <type>sonar</type>
+            <id>4</id>
+            <topic>sonar_back_left/sonar_link/sensor/sonar</topic>
+        </sensor>
+        <sensor>
+            <type>sonar</type>
+            <id>5</id>
+            <topic>sonar_back/sonar_link/sensor/sonar</topic>
+        </sensor>
+        <sensor>
+            <type>sonar</type>
+            <id>6</id>
+            <topic>sonar_back_right/sonar_link/sensor/sonar</topic>
+        </sensor>
+        <sensor>
+            <type>sonar</type>
+            <id>7</id>
+            <topic>sonar_right/sonar_link/sensor/sonar</topic>
+        </sensor>
+        <sensor>
+            <type>sonar</type>
+            <id>8</id>
+            <topic>sonar_front_right/sonar_link/sensor/sonar</topic>
+        </sensor>
 
     </plugin>
 
@@ -137,45 +228,13 @@
     </joint>
 
     <!-- RangeFinder -->
-    <link name='sonar_forward_link'>
+    <include>
         <pose>0.245 0 0.055 0 0 0</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_forward_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_forward</name>
+    </include>
     <joint name='sonar_forward_joint' type='revolute'>
-        <child>sonar_forward_link</child>
+        <child>sonar_forward::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
@@ -186,45 +245,13 @@
         </axis>
     </joint>
 
-    <link name='sonar_forward_left_link'>
+    <include>
         <pose>0.245 0.145 0.055 0 0 0.785398163</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_forward_left_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_forward_left</name>
+    </include>
     <joint name='sonar_forward_left_joint' type='revolute'>
-        <child>sonar_forward_left_link</child>
+        <child>sonar_forward_left::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
@@ -235,45 +262,13 @@
         </axis>
     </joint>
 
-    <link name='sonar_left_link'>
+    <include>
         <pose>0 0.145 0.055 0 0 1.57079633</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_left_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_left</name>
+    </include>
     <joint name='sonar_left_joint' type='revolute'>
-        <child>sonar_left_link</child>
+        <child>sonar_left::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
@@ -284,45 +279,13 @@
         </axis>
     </joint>
 
-    <link name='sonar_back_left_link'>
+    <include>
         <pose>-0.245 0.145 0.055 0 0 2.35619449</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_back_left_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_back_left</name>
+    </include>
     <joint name='sonar_back_left_joint' type='revolute'>
-        <child>sonar_back_left_link</child>
+        <child>sonar_back_left::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
@@ -333,45 +296,13 @@
         </axis>
     </joint>
 
-    <link name='sonar_back_link'>
+    <include>
         <pose>-0.245 0 0.055 0 0 3.14159265</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_back_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_back</name>
+    </include>
     <joint name='sonar_back_joint' type='revolute'>
-        <child>sonar_back_link</child>
+        <child>sonar_back::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
@@ -382,45 +313,13 @@
         </axis>
     </joint>
 
-    <link name='sonar_back_right_link'>
+    <include>
         <pose>-0.245 -0.145 0.055 0 0 -2.35619449</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_back_right_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_back_right</name>
+    </include>
     <joint name='sonar_back_right_joint' type='revolute'>
-        <child>sonar_back_right_link</child>
+        <child>sonar_back_right::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
@@ -431,45 +330,13 @@
         </axis>
     </joint>
 
-    <link name='sonar_right_link'>
+    <include>
         <pose>0 -0.145 0.055 0 0 -1.57079633</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_right_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_right</name>
+    </include>
     <joint name='sonar_right_joint' type='revolute'>
-        <child>sonar_right_link</child>
+        <child>sonar_right::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
@@ -480,45 +347,13 @@
         </axis>
     </joint>
 
-    <link name='sonar_forward_right_link'>
+    <include>
         <pose>0.245 -0.145 0.055 0 0 -0.785398163</pose>
-        <visual name="visual">
-            <geometry>
-                <box><size>0.01 0.01 0.01</size></box>
-            </geometry>
-            <material>
-          <script>
-            <name>Gazebo/Purple</name>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-          </script>
-            </material>
-        </visual>
-        <inertial>
-            <mass>0.01</mass>
-            <inertia>
-                <ixx>1.66667E-07</ixx>
-                <ixy>0</ixy>
-                <ixz>0</ixz>
-                <iyy>1.66667E-07</iyy>
-                <iyz>0</iyz>
-                <izz>1.66667E-07</izz>
-            </inertia>
-        </inertial>
-        <sensor name="sonar_forward_right_sensor" type="sonar">
-            <pose>0 0 0 0 -1.57079633 0</pose>
-            <always_on>1</always_on>
-            <update_rate>10</update_rate>
-            <visualize>true</visualize>
-            <sonar>
-                <geometry>cone</geometry>
-                <min>0.2</min>
-                <max>7.0</max>
-                <radius>0.9</radius>
-            </sonar>
-        </sensor>
-    </link>
+        <uri>model://sonar</uri>
+        <name>sonar_forward_right</name>
+    </include>
     <joint name='sonar_forward_right_joint' type='revolute'>
-        <child>sonar_forward_right_link</child>
+        <child>sonar_forward_right::sonar_link</child>
         <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
         <axis>
             <xyz>0 0 1</xyz>
