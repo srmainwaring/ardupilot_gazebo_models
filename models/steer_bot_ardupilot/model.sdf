@@ -123,11 +123,11 @@
             
             e.g. /gazebo/default/steer_bot_ardupilot/
 
-            Id
-            ==
+            Index
+            =====
 
-            Together the sensor::type and sensor::id element are used
-            to link the sensor with the ArduPilot parameter group that
+            The sensor::type and sensor::index element are used
+            to associate the sensor with the ArduPilot parameter group that
             defines the sensor properties such as its position and orientation
             in the frame.
          -->
@@ -143,53 +143,53 @@
         -->
         <sensor>
             <type>sonar</type>
-            <id>1</id>
+            <index>1</index>
             <topic>sonar_forward/sonar_link/sensor/sonar</topic>
         </sensor>
 
          <!-- 
-            RNGFND1_TYPE = 100 (SITL)
-            RNGFND1_TYPE = 0 (LINEAR)
-            RNGFND1_MIN_CM = 20 (0.2 m)
-            RNGFND1_MAX_CM = 700 (7.0 m)
-            RNGFND1_POS_X = 0.25
-            RNGFND1_POS_Y = 0.15
-            RNGFND1_POS_Z = 0.05
-            RNGFND1_ORIENT = 7 (FORWARD_LEFT)
+            RNGFND2_TYPE = 100 (SITL)
+            RNGFND2_TYPE = 0 (LINEAR)
+            RNGFND2_MIN_CM = 20 (0.2 m)
+            RNGFND2_MAX_CM = 700 (7.0 m)
+            RNGFND2_POS_X = 0.25
+            RNGFND2_POS_Y = 0.15
+            RNGFND2_POS_Z = 0.05
+            RNGFND2_ORIENT = 7 (FORWARD_LEFT)
         -->
         <sensor>
             <type>sonar</type>
-            <id>2</id>
+            <index>2</index>
             <topic>sonar_forward_left/sonar_link/sensor/sonar</topic>
         </sensor>
         <sensor>
             <type>sonar</type>
-            <id>3</id>
+            <index>3</index>
             <topic>sonar_left/sonar_link/sensor/sonar</topic>
         </sensor>
         <sensor>
             <type>sonar</type>
-            <id>4</id>
+            <index>4</index>
             <topic>sonar_back_left/sonar_link/sensor/sonar</topic>
         </sensor>
         <sensor>
             <type>sonar</type>
-            <id>5</id>
+            <index>5</index>
             <topic>sonar_back/sonar_link/sensor/sonar</topic>
         </sensor>
         <sensor>
             <type>sonar</type>
-            <id>6</id>
+            <index>6</index>
             <topic>sonar_back_right/sonar_link/sensor/sonar</topic>
         </sensor>
         <sensor>
             <type>sonar</type>
-            <id>7</id>
+            <index>7</index>
             <topic>sonar_right/sonar_link/sensor/sonar</topic>
         </sensor>
         <sensor>
             <type>sonar</type>
-            <id>8</id>
+            <index>8</index>
             <topic>sonar_front_right/sonar_link/sensor/sonar</topic>
         </sensor>
 
