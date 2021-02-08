@@ -133,13 +133,13 @@
          -->
          <!-- 
             RNGFND1_TYPE = 100 (SITL)
-            RNGFND1_TYPE = 0 (LINEAR)
+            RNGFND1_FUNCTION = 0 (LINEAR)
             RNGFND1_MIN_CM = 20 (0.2 m)
             RNGFND1_MAX_CM = 700 (7.0 m)
             RNGFND1_POS_X = 0.25
             RNGFND1_POS_Y = 0.0
-            RNGFND1_POS_Z = 0.05
-            RNGFND1_ORIENT = 0 (FORWARD)
+            RNGFND1_POS_Z = -0.05
+            RNGFND1_ORIENT = 0 (Forward)
         -->
         <sensor>
             <type>sonar</type>
@@ -149,48 +149,96 @@
 
          <!-- 
             RNGFND2_TYPE = 100 (SITL)
-            RNGFND2_TYPE = 0 (LINEAR)
+            RNGFND2_FUNCTION = 0 (LINEAR)
             RNGFND2_MIN_CM = 20 (0.2 m)
             RNGFND2_MAX_CM = 700 (7.0 m)
             RNGFND2_POS_X = 0.25
-            RNGFND2_POS_Y = 0.15
-            RNGFND2_POS_Z = 0.05
-            RNGFND2_ORIENT = 7 (FORWARD_LEFT)
+            RNGFND2_POS_Y = -0.15
+            RNGFND2_POS_Z = -0.05
+            RNGFND2_ORIENT = 7 (Forward-Left)
         -->
         <sensor>
             <type>sonar</type>
             <index>2</index>
             <topic>sonar_forward_left/sonar_link/sensor/sonar</topic>
         </sensor>
-        <sensor>
+
+        <!-- Do not register left sensor -->
+        <!-- <sensor>
             <type>sonar</type>
             <index>3</index>
             <topic>sonar_left/sonar_link/sensor/sonar</topic>
+        </sensor> -->
+
+         <!-- 
+            RNGFND3_TYPE = 100 (SITL)
+            RNGFND3_FUNCTION = 0 (LINEAR)
+            RNGFND3_MIN_CM = 20 (0.2 m)
+            RNGFND3_MAX_CM = 700 (7.0 m)
+            RNGFND3_POS_X = -0.25
+            RNGFND3_POS_Y = -0.15
+            RNGFND3_POS_Z = -0.05
+            RNGFND3_ORIENT = 5 (Back-Left)
+        -->
+        <sensor>
+            <type>sonar</type>
+            <index>3</index>
+            <topic>sonar_back_left/sonar_link/sensor/sonar</topic>
         </sensor>
+
+         <!-- 
+            RNGFND4_TYPE = 100 (SITL)
+            RNGFND4_FUNCTION = 0 (LINEAR)
+            RNGFND4_MIN_CM = 20 (0.2 m)
+            RNGFND4_MAX_CM = 700 (7.0 m)
+            RNGFND4_POS_X = -0.25
+            RNGFND4_POS_Y = 0.0
+            RNGFND4_POS_Z = -0.05
+            RNGFND4_ORIENT = 4 (Back)
+        -->
         <sensor>
             <type>sonar</type>
             <index>4</index>
-            <topic>sonar_back_left/sonar_link/sensor/sonar</topic>
+            <topic>sonar_back/sonar_link/sensor/sonar</topic>
         </sensor>
+
+         <!-- 
+            RNGFND5_TYPE = 100 (SITL)
+            RNGFND5_FUNCTION = 0 (LINEAR)
+            RNGFND5_MIN_CM = 20 (0.2 m)
+            RNGFND5_MAX_CM = 700 (7.0 m)
+            RNGFND5_POS_X = -0.25
+            RNGFND5_POS_Y = 0.15
+            RNGFND5_POS_Z = -0.05
+            RNGFND5_ORIENT = 3 (Back-Right)
+        -->
         <sensor>
             <type>sonar</type>
             <index>5</index>
-            <topic>sonar_back/sonar_link/sensor/sonar</topic>
-        </sensor>
-        <sensor>
-            <type>sonar</type>
-            <index>6</index>
             <topic>sonar_back_right/sonar_link/sensor/sonar</topic>
         </sensor>
-        <sensor>
+
+        <!-- Do not register right sensor -->
+        <!-- <sensor>
             <type>sonar</type>
             <index>7</index>
             <topic>sonar_right/sonar_link/sensor/sonar</topic>
-        </sensor>
+        </sensor> -->
+
+         <!-- 
+            RNGFND6_TYPE = 100 (SITL)
+            RNGFND6_FUNCTION = 0 (LINEAR)
+            RNGFND6_MIN_CM = 20 (0.2 m)
+            RNGFND6_MAX_CM = 700 (7.0 m)
+            RNGFND6_POS_X = 0.25
+            RNGFND6_POS_Y = 0.15
+            RNGFND6_POS_Z = -0.05
+            RNGFND6_ORIENT = 1 (Forward-Right)
+        -->
         <sensor>
             <type>sonar</type>
-            <index>8</index>
-            <topic>sonar_front_right/sonar_link/sensor/sonar</topic>
+            <index>6</index>
+            <topic>sonar_forward_right/sonar_link/sensor/sonar</topic>
         </sensor>
 
     </plugin>
@@ -262,7 +310,8 @@
         </axis>
     </joint>
 
-    <include>
+    <!-- Disable left sonar -->
+    <!-- <include>
         <pose>0 0.145 0.055 0 0 1.57079633</pose>
         <uri>model://sonar</uri>
         <name>sonar_left</name>
@@ -277,7 +326,7 @@
                 <upper>0</upper>
             </limit>
         </axis>
-    </joint>
+    </joint> -->
 
     <include>
         <pose>-0.245 0.145 0.055 0 0 2.35619449</pose>
@@ -330,7 +379,8 @@
         </axis>
     </joint>
 
-    <include>
+    <!-- Disable right sonar -->
+    <!-- <include>
         <pose>0 -0.145 0.055 0 0 -1.57079633</pose>
         <uri>model://sonar</uri>
         <name>sonar_right</name>
@@ -345,7 +395,7 @@
                 <upper>0</upper>
             </limit>
         </axis>
-    </joint>
+    </joint> -->
 
     <include>
         <pose>0.245 -0.145 0.055 0 0 -0.785398163</pose>
