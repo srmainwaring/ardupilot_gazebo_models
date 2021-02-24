@@ -11,7 +11,7 @@ need to be configured to use scripting: see the Ardupilot documentation [Lua Scr
 ### Start Gazebo
 
 ```bash
-# start an empty world with containing the Quadruped
+# start an empty world with containing the vehicle
 $ gazebo --verbose 
 ```
 
