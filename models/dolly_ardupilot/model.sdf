@@ -6,6 +6,40 @@
         <uri>model://dolly</uri>
     </include>
 
+    <!--  Using values from iris_with_standoffs_demo -->
+    <plugin name="prop_blade_1_liftdrag" filename="libLiftDragPlugin.so">
+        <a0>0.3</a0>
+        <alpha_stall>1.4</alpha_stall>
+        <cla>4.2500</cla>
+        <cda>0.10</cda>
+        <cma>0.00</cma>
+        <cla_stall>-0.025</cla_stall>
+        <cda_stall>0.0</cda_stall>
+        <cma_stall>0.0</cma_stall>
+        <area>0.002</area>
+        <air_density>1.2041</air_density>
+        <cp>0.084 0 0</cp>
+        <forward>0 1 0</forward>
+        <upward>0 0 1</upward>
+        <link_name>dolly_ardupilot::dolly::motor_link</link_name>
+    </plugin>
+    <plugin name="prop_blade_2_liftdrag" filename="libLiftDragPlugin.so">
+        <a0>0.3</a0>
+        <alpha_stall>1.4</alpha_stall>
+        <cla>4.2500</cla>
+        <cda>0.10</cda>
+        <cma>0.00</cma>
+        <cla_stall>-0.025</cla_stall>
+        <cda_stall>0.0</cda_stall>
+        <cma_stall>0.0</cma_stall>
+        <area>0.002</area>
+        <air_density>1.2041</air_density>
+        <cp>-0.084 0 0</cp>
+        <forward>0 -1 0</forward>
+        <upward>0 0 1</upward>
+        <link_name>dolly_ardupilot::dolly::motor_link</link_name>
+    </plugin>
+
     <plugin name="ardupilot_plugin" filename="libArduPilotPlugin.so">
         <fdm_addr>127.0.0.1</fdm_addr>
         <fdm_port_in>9002</fdm_port_in>
@@ -30,9 +64,9 @@
             <servo_min>1000</servo_min>
             <servo_max>2000</servo_max>
             <type>POSITION</type>
-            <p_gain>5</p_gain>
-            <i_gain>0.01</i_gain>
-            <d_gain>0.01</d_gain>
+            <p_gain>20</p_gain>
+            <i_gain>0.1</i_gain>
+            <d_gain>0.1</d_gain>
             <i_max>1</i_max>
             <i_min>0</i_min>
             <cmd_max>50.0</cmd_max>
@@ -48,14 +82,14 @@
         <control channel="2">
             <jointName>dolly_ardupilot::dolly::motor_joint</jointName>
             <useForce>1</useForce>
-            <multiplier>1</multiplier>
+            <multiplier>-800</multiplier>
             <offset>0</offset>
             <servo_min>1000</servo_min>
             <servo_max>2000</servo_max>
             <type>VELOCITY</type>
             <p_gain>0.20</p_gain>
             <i_gain>0</i_gain>
-            <d_gain>0.01</d_gain>
+            <d_gain>0.0001</d_gain>
             <i_max>1</i_max>
             <i_min>0</i_min>
             <cmd_max>2.5</cmd_max>
