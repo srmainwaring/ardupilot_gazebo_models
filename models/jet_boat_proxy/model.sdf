@@ -1,0 +1,629 @@
+<sdf version='1.7'>
+  <model name='jet_boat_proxy'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.00833333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0120833</iyy>
+          <iyz>0</iyz>
+          <izz>0.0170833</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.4 0.2</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.4 0.2</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGray</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_left_steer_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.35 0.3 0.1 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>back_left_steer_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_left_steer_link'>
+      <pose relative_to='back_left_steer_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>3.08333e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.08333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_left_steer_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_left_steer_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Yellow</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_left_wheel_joint' type='revolute'>
+      <pose relative_to='back_left_steer_link'>0 0 -0.175 -1.5708 0 0</pose>
+      <parent>back_left_steer_link</parent>
+      <child>back_left_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_left_wheel_link'>
+      <pose relative_to='back_left_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000473958</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000473958</iyy>
+          <iyz>0</iyz>
+          <izz>0.00078125</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_left_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='back_left_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='back_right_steer_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.35 -0.3 0.1 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>back_right_steer_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-0.785398</lower>
+          <upper>0.785398</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_right_steer_link'>
+      <pose relative_to='back_right_steer_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>3.08333e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.08333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_right_steer_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_right_steer_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Yellow</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_right_wheel_joint' type='revolute'>
+      <pose relative_to='back_right_steer_link'>0 0 -0.175 -1.5708 0 0</pose>
+      <parent>back_right_steer_link</parent>
+      <child>back_right_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_right_wheel_link'>
+      <pose relative_to='back_right_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000473958</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000473958</iyy>
+          <iyz>0</iyz>
+          <izz>0.00078125</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_right_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='back_right_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='front_left_steer_joint' type='revolute'>
+      <pose relative_to='base_link'>0.35 0.3 0.1 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_left_steer_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>3.14159</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_left_steer_link'>
+      <pose relative_to='front_left_steer_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>3.08333e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.08333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_steer_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_left_steer_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Yellow</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_left_wheel_joint' type='revolute'>
+      <pose relative_to='front_left_steer_link'>0 0 -0.175 -1.5708 0 0</pose>
+      <parent>front_left_steer_link</parent>
+      <child>front_left_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_left_wheel_link'>
+      <pose relative_to='front_left_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000473958</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000473958</iyy>
+          <iyz>0</iyz>
+          <izz>0.00078125</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='front_left_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+    <joint name='front_right_steer_joint' type='revolute'>
+      <pose relative_to='base_link'>0.35 -0.3 0.1 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_right_steer_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>0</upper>
+          <effort>100</effort>
+          <velocity>0.5</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_right_steer_link'>
+      <pose relative_to='front_right_steer_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>3.08333e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>3.08333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_steer_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_right_steer_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.05</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Yellow</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_right_wheel_joint' type='revolute'>
+      <pose relative_to='front_right_steer_link'>0 0 -0.175 -1.5708 0 0</pose>
+      <parent>front_right_steer_link</parent>
+      <child>front_right_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_right_wheel_link'>
+      <pose relative_to='front_right_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.000473958</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000473958</iyy>
+          <iyz>0</iyz>
+          <izz>0.00078125</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name='front_right_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.125</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
