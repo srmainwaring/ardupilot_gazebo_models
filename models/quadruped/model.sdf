@@ -21,12 +21,19 @@
           </box>
         </geometry>
         <surface>
-          <contact>
-            <ode/>
-          </contact>
           <friction>
-            <ode/>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
           </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
         </surface>
       </collision>
       <visual name='base_link_visual'>
@@ -96,12 +103,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='coxa_bl_link_visual'>
@@ -171,12 +182,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='femur_bl_link_visual'>
@@ -226,15 +241,15 @@
     <link name='tibia_bl_link'>
       <pose relative_to='tibia_bl_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0 -0.068 0 -0 0</pose>
-        <mass>0.15</mass>
+        <pose>0 0 -0.051 0 -0 0</pose>
+        <mass>0.1</mass>
         <inertia>
-          <ixx>0.0001779</ixx>
+          <ixx>8.92e-05</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.0001779</iyy>
+          <iyy>8.92e-05</iyy>
           <iyz>0</iyz>
-          <izz>7e-06</izz>
+          <izz>5e-06</izz>
         </inertia>
       </inertial>
       <collision name='tibia_bl_link_collision'>
@@ -246,12 +261,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <collision name='tibia_bl_link_fixed_joint_lump__foot_bl_link_collision_1'>
@@ -262,15 +281,24 @@
           </sphere>
         </geometry>
         <surface>
-          <contact>
-            <ode/>
-          </contact>
           <friction>
             <ode>
-              <mu>1</mu>
               <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
             </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <surface_radius>0.01</surface_radius>
+              <use_patch_radius>0</use_patch_radius>
+            </torsional>
           </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
         </surface>
       </collision>
       <visual name='tibia_bl_link_visual'>
@@ -341,12 +369,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='coxa_br_link_visual'>
@@ -416,12 +448,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='femur_br_link_visual'>
@@ -471,15 +507,15 @@
     <link name='tibia_br_link'>
       <pose relative_to='tibia_br_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0 -0.068 0 -0 0</pose>
-        <mass>0.15</mass>
+        <pose>0 0 -0.051 0 -0 0</pose>
+        <mass>0.1</mass>
         <inertia>
-          <ixx>0.0001779</ixx>
+          <ixx>8.92e-05</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.0001779</iyy>
+          <iyy>8.92e-05</iyy>
           <iyz>0</iyz>
-          <izz>7e-06</izz>
+          <izz>5e-06</izz>
         </inertia>
       </inertial>
       <collision name='tibia_br_link_collision'>
@@ -491,12 +527,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <collision name='tibia_br_link_fixed_joint_lump__foot_br_link_collision_1'>
@@ -507,15 +547,24 @@
           </sphere>
         </geometry>
         <surface>
-          <contact>
-            <ode/>
-          </contact>
           <friction>
             <ode>
-              <mu>1</mu>
               <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
             </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <surface_radius>0.01</surface_radius>
+              <use_patch_radius>0</use_patch_radius>
+            </torsional>
           </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
         </surface>
       </collision>
       <visual name='tibia_br_link_visual'>
@@ -586,12 +635,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='coxa_fl_link_visual'>
@@ -661,12 +714,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='femur_fl_link_visual'>
@@ -716,15 +773,15 @@
     <link name='tibia_fl_link'>
       <pose relative_to='tibia_fl_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0 -0.068 0 -0 0</pose>
-        <mass>0.15</mass>
+        <pose>0 0 -0.051 0 -0 0</pose>
+        <mass>0.1</mass>
         <inertia>
-          <ixx>0.0001779</ixx>
+          <ixx>8.92e-05</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.0001779</iyy>
+          <iyy>8.92e-05</iyy>
           <iyz>0</iyz>
-          <izz>7e-06</izz>
+          <izz>5e-06</izz>
         </inertia>
       </inertial>
       <collision name='tibia_fl_link_collision'>
@@ -736,12 +793,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <collision name='tibia_fl_link_fixed_joint_lump__foot_fl_link_collision_1'>
@@ -752,15 +813,24 @@
           </sphere>
         </geometry>
         <surface>
-          <contact>
-            <ode/>
-          </contact>
           <friction>
             <ode>
-              <mu>1</mu>
               <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
             </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <surface_radius>0.01</surface_radius>
+              <use_patch_radius>0</use_patch_radius>
+            </torsional>
           </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
         </surface>
       </collision>
       <visual name='tibia_fl_link_visual'>
@@ -831,12 +901,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='coxa_fr_link_visual'>
@@ -906,12 +980,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <visual name='femur_fr_link_visual'>
@@ -961,15 +1039,15 @@
     <link name='tibia_fr_link'>
       <pose relative_to='tibia_fr_joint'>0 0 0 0 -0 0</pose>
       <inertial>
-        <pose>0 0 -0.068 0 -0 0</pose>
-        <mass>0.15</mass>
+        <pose>0 0 -0.051 0 -0 0</pose>
+        <mass>0.1</mass>
         <inertia>
-          <ixx>0.0001779</ixx>
+          <ixx>8.92e-05</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.0001779</iyy>
+          <iyy>8.92e-05</iyy>
           <iyz>0</iyz>
-          <izz>7e-06</izz>
+          <izz>5e-06</izz>
         </inertia>
       </inertial>
       <collision name='tibia_fr_link_collision'>
@@ -981,12 +1059,16 @@
           </cylinder>
         </geometry>
         <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
           <contact>
             <ode/>
           </contact>
-          <friction>
-            <ode/>
-          </friction>
         </surface>
       </collision>
       <collision name='tibia_fr_link_fixed_joint_lump__foot_fr_link_collision_1'>
@@ -997,15 +1079,24 @@
           </sphere>
         </geometry>
         <surface>
-          <contact>
-            <ode/>
-          </contact>
           <friction>
             <ode>
-              <mu>1</mu>
               <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
             </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <surface_radius>0.01</surface_radius>
+              <use_patch_radius>0</use_patch_radius>
+            </torsional>
           </friction>
+          <contact>
+            <ode>
+              <kp>1e+15</kp>
+              <kd>1e+13</kd>
+            </ode>
+          </contact>
         </surface>
       </collision>
       <visual name='tibia_fr_link_visual'>

@@ -281,9 +281,16 @@
         </sensor>
     </link>
 
-    <joint name='imu_joint' type='fixed'>
+    <joint name='imu_joint' type='revolute'>
         <child>imu_link</child>
         <parent>quadruped_ardupilot::quadruped::base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+                <lower>0</lower>
+                <upper>0</upper>
+            </limit>
+        </axis>
     </joint>
 
 </model>
