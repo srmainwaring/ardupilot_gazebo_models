@@ -5,7 +5,7 @@ Gazebo models that can be controlled with ArduPilot using the ArduPilot Gazebo p
 
 ## Models
 
-### Sawppy with ArduPilot
+### [Sawppy](config/sawppy/README.md)
 
 This is a Gazebo model of [Roger Chen's Sawppy Rover](https://github.com/Roger-random/Sawppy_Rover)
 integrated with ArduPilot.
@@ -13,23 +13,30 @@ integrated with ArduPilot.
 The controller for the model uses the ArduPilot Lua scripting framework to support the custom frame
 and control the 6 wheel motors and 4 steering servos.
 
-### Quadruped with ArduPilot
+### [Quadruped](config/quadruped/README.md)
 
 This is a Gazebo model of a Quadruped robot developed by Ashvath in this project: [GSoC 2020: Walking Robot Support For Ardupilot](https://discuss.ardupilot.org/t/gsoc-2020-walking-robot-support-for-ardupilot/57080).
 
 The servo mixer for this model uses the ArduPilot Lua scripting framework.
 
-### SteerBot with ArduPilot
+### [SteerBot](config/steer_bot/README.md)
 
 This is a simple Gazebo model of a rover with car steering and rear wheel drive.
 
 The servo mixer for this model uses the ArduPilot Lua scripting framewortk.
 
-### JetBoat with ArduPilot
+### [JetBoat](config/jet_boat/README.md)
 
 This is a simple Gazebo model of a jet boat with twin reversible thrusters.
 
 The servo mixer for this model uses the ArduPilot Lua scripting framework.
+
+### [Dolly](config/dolly/README.md)
+
+This is a Gazebo model of a board with castor wheels powered by a steerable rotor.
+
+This toy model is an exerise in tuning a vehicle with almost no yaw control inspired
+by this [ArduPilot Discord post](https://discord.com/channels/674039678562861068/674039678982422579/821309513805332500) by Peter Barker.
 
 ## License
 

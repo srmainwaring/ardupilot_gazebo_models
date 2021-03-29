@@ -1,0 +1,1221 @@
+<sdf version='1.7'>
+  <model name='dolly_ball_castor'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00750833</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.0208417</iyy>
+          <iyz>0</iyz>
+          <izz>0.0283333</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.3 0.01</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.3 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGray</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_left_ball_castor_zaxis_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.2 0.1 -0.03 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>back_left_ball_castor_zaxis_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_left_ball_castor_zaxis_link'>
+      <pose relative_to='back_left_ball_castor_zaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_left_ball_castor_zaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_left_ball_castor_zaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_left_ball_castor_yaxis_joint' type='revolute'>
+      <pose relative_to='back_left_ball_castor_zaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>back_left_ball_castor_zaxis_link</parent>
+      <child>back_left_ball_castor_yaxis_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_left_ball_castor_yaxis_link'>
+      <pose relative_to='back_left_ball_castor_yaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_left_ball_castor_yaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_left_ball_castor_yaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_left_ball_castor_xaxis_joint' type='revolute'>
+      <pose relative_to='back_left_ball_castor_yaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>back_left_ball_castor_yaxis_link</parent>
+      <child>back_left_ball_castor_xaxis_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_left_ball_castor_xaxis_link'>
+      <pose relative_to='back_left_ball_castor_xaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_left_ball_castor_xaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_left_ball_castor_xaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_right_ball_castor_zaxis_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.2 -0.1 -0.03 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>back_right_ball_castor_zaxis_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_right_ball_castor_zaxis_link'>
+      <pose relative_to='back_right_ball_castor_zaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_right_ball_castor_zaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_right_ball_castor_zaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_right_ball_castor_yaxis_joint' type='revolute'>
+      <pose relative_to='back_right_ball_castor_zaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>back_right_ball_castor_zaxis_link</parent>
+      <child>back_right_ball_castor_yaxis_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_right_ball_castor_yaxis_link'>
+      <pose relative_to='back_right_ball_castor_yaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_right_ball_castor_yaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_right_ball_castor_yaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_right_ball_castor_xaxis_joint' type='revolute'>
+      <pose relative_to='back_right_ball_castor_yaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>back_right_ball_castor_yaxis_link</parent>
+      <child>back_right_ball_castor_xaxis_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_right_ball_castor_xaxis_link'>
+      <pose relative_to='back_right_ball_castor_xaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_right_ball_castor_xaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_right_ball_castor_xaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_steer_rotor_joint' type='revolute'>
+      <pose relative_to='base_link'>0 0 0.055 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>back_steer_rotor_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>50</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_steer_rotor_link'>
+      <pose relative_to='back_steer_rotor_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>9.33333e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>9.33333e-05</iyy>
+          <iyz>0</iyz>
+          <izz>2e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_steer_rotor_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_steer_rotor_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.1</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='back_motor_joint' type='revolute'>
+      <pose relative_to='back_steer_rotor_link'>0 0 0.07 0 -1.5708 0</pose>
+      <parent>back_steer_rotor_link</parent>
+      <child>back_motor_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.01</damping>
+          <friction>0.001</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='back_motor_link'>
+      <pose relative_to='back_motor_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0.004286 0 -0 0</pose>
+        <mass>0.07</mass>
+        <inertia>
+          <ixx>2.18393e-05</ixx>
+          <ixy>0</ixy>
+          <ixz>-2.03725e-21</ixz>
+          <iyy>5.51101e-05</iyy>
+          <iyz>0</iyz>
+          <izz>4.53958e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_motor_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <collision name='back_motor_link_fixed_joint_lump__back_prop_link_collision_1'>
+        <pose>0 0 0.03 0 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.005</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='back_motor_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.02</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='back_motor_link_fixed_joint_lump__back_motor_axle_link_visual_1'>
+        <pose>0 0 0.0075 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.065</length>
+            <radius>0.0025</radius>
+          </cylinder>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Orange</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='back_motor_link_fixed_joint_lump__back_prop_link_visual_2'>
+        <pose>0 0 0.03 0 -0 0.174533</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://dolly_ball_castor/meshes/propeller_9x4.7.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/DarkGray</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='back_motor_link_fixed_joint_lump__back_prop_cp1_link_visual_3'>
+        <pose>0.05 0 0.03 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.0075</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='back_motor_link_fixed_joint_lump__back_prop_cp2_link_visual_4'>
+        <pose>-0.05 0 0.03 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.0075</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Red</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_left_ball_castor_zaxis_joint' type='revolute'>
+      <pose relative_to='base_link'>0.2 0.1 -0.03 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_left_ball_castor_zaxis_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_left_ball_castor_zaxis_link'>
+      <pose relative_to='front_left_ball_castor_zaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_ball_castor_zaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_left_ball_castor_zaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_left_ball_castor_yaxis_joint' type='revolute'>
+      <pose relative_to='front_left_ball_castor_zaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>front_left_ball_castor_zaxis_link</parent>
+      <child>front_left_ball_castor_yaxis_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_left_ball_castor_yaxis_link'>
+      <pose relative_to='front_left_ball_castor_yaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_ball_castor_yaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_left_ball_castor_yaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_left_ball_castor_xaxis_joint' type='revolute'>
+      <pose relative_to='front_left_ball_castor_yaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>front_left_ball_castor_yaxis_link</parent>
+      <child>front_left_ball_castor_xaxis_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_left_ball_castor_xaxis_link'>
+      <pose relative_to='front_left_ball_castor_xaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_ball_castor_xaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_left_ball_castor_xaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_right_ball_castor_zaxis_joint' type='revolute'>
+      <pose relative_to='base_link'>0.2 -0.1 -0.03 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_right_ball_castor_zaxis_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_right_ball_castor_zaxis_link'>
+      <pose relative_to='front_right_ball_castor_zaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_ball_castor_zaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_right_ball_castor_zaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_right_ball_castor_yaxis_joint' type='revolute'>
+      <pose relative_to='front_right_ball_castor_zaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>front_right_ball_castor_zaxis_link</parent>
+      <child>front_right_ball_castor_yaxis_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_right_ball_castor_yaxis_link'>
+      <pose relative_to='front_right_ball_castor_yaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_ball_castor_yaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_right_ball_castor_yaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.005</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_right_ball_castor_xaxis_joint' type='revolute'>
+      <pose relative_to='front_right_ball_castor_yaxis_link'>0 0 0 0 -0 0</pose>
+      <parent>front_right_ball_castor_yaxis_link</parent>
+      <child>front_right_ball_castor_xaxis_link</child>
+      <axis>
+        <xyz>1 0 0</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <damping>0.0001</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+      <physics>
+        <ode>
+          <limit>
+            <cfm>0</cfm>
+            <erp>0.2</erp>
+          </limit>
+        </ode>
+      </physics>
+    </joint>
+    <link name='front_right_ball_castor_xaxis_link'>
+      <pose relative_to='front_right_ball_castor_xaxis_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.0333333</mass>
+        <inertia>
+          <ixx>8.33333e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>8.33333e-06</iyy>
+          <iyz>0</iyz>
+          <izz>8.33333e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_ball_castor_xaxis_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu2>1</mu2>
+              <fdir1>1 0 0</fdir1>
+              <mu1>1.0</mu1>
+            </ode>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
+      </collision>
+      <visual name='front_right_ball_castor_xaxis_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.025</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Green</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+  </model>
+</sdf>
