@@ -35,7 +35,7 @@ The servo mixer for this model uses the ArduPilot Lua scripting framework.
 
 This is a Gazebo model of a board with castor wheels powered by a steerable rotor.
 
-This toy model is an exerise in tuning a vehicle with almost no yaw control inspired
+This toy model provides an exercise in tuning a vehicle with poor yaw control inspired
 by this [ArduPilot Discord post](https://discord.com/channels/674039678562861068/674039678982422579/821309513805332500) by Peter Barker.
 
 ## License
