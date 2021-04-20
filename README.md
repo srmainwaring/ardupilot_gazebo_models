@@ -31,7 +31,7 @@ This is a simple Gazebo model of a jet boat with twin reversible thrusters.
 
 The servo mixer for this model uses the ArduPilot Lua scripting framework.
 
-### [Dolly](config/dolly/README.md)
+### [FanCar](config/fan_car/README.md)
 
 This is a Gazebo model of a board with castor wheels powered by a steerable rotor.
 
