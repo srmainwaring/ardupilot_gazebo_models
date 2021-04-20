@@ -171,7 +171,7 @@ MOT_SLEWRATE     70
 
 ### Throttle
 
-```console
+```bash
 ARMING_RUDDER   0
 CRUISE_SPEED    2.0
 CRUISE_THROTTLE 50.0
