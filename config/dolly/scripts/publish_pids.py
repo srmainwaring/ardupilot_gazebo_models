@@ -33,8 +33,6 @@ from pygazebo.msg.poses_stamped_pb2 import PosesStamped
 from pygazebo.msg.subscribe_pb2 import Subscribe
 from pygazebo.msg.pid_pb2 import PID
 
-topic_prefix = '/gazebo/dolly_world'
-
 def pose_info_cb(data):
     pose = PosesStamped.FromString(data)
     print("pose: {}".format(pose))
@@ -50,15 +48,19 @@ async def main_loop():
     publishers = []
     messages = []
 
-    if True:
+    # topics:
+    # /dolly_ball_castor_ardupilot/dolly_ball_castor/back_motor_joint/pid
+    # /dolly_ardupilot/dolly/back_steer_rotor_joint/pid
+    
+    if False:
         publisher = await manager.advertise(
-            topic_prefix + '/dolly_ball_castor_ardupilot/dolly_ball_castor/back_motor_joint/pid',
+            '/gazebo/dolly_world/dolly_ardupilot/dolly/back_motor_joint/pid',
             'gazebo.msgs.PID')
         
         message = PID()
         message.p_gain = 0.005
-        message.i_gain = 0.0
-        message.d_gain = 1.0e-5
+        message.i_gain = 0.01
+        message.d_gain = 0.0
         message.i_max  = 0.1
         message.i_min  = -0.1
         message.limit  = 5.0
@@ -66,9 +68,9 @@ async def main_loop():
         publishers.append(publisher)
         messages.append(message)
 
-    if True:
+    if False:
         publisher = await manager.advertise(
-            topic_prefix + '/dolly_ball_castor_ardupilot/dolly_ball_castor/back_steer_rotor_joint/pid',
+            '/gazebo/dolly_world/dolly_ball_castor_ardupilot/dolly_ball_castor/back_steer_rotor_joint/pid',
             'gazebo.msgs.PID')
         
         message = PID()
@@ -81,6 +83,23 @@ async def main_loop():
 
         publishers.append(publisher)
         messages.append(message)
+
+    if True:
+        publisher = await manager.advertise(
+            '/gazebo/default/motor_joint/pid',
+            'gazebo.msgs.PID')
+        
+        message = PID()
+        message.p_gain = 0.007
+        message.i_gain = 0.005
+        message.d_gain = 0.0
+        message.i_max  = 0.1
+        message.i_min  = -0.1
+        message.limit  = 10.0
+
+        publishers.append(publisher)
+        messages.append(message)
+
 
     # subscribers
     # subscriber = await manager.subscribe(
