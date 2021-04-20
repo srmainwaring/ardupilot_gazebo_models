@@ -23,8 +23,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -61,8 +60,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.0001</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -101,8 +100,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -140,8 +138,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.03</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -180,8 +178,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -219,8 +216,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.0001</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -259,8 +256,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -298,8 +294,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.03</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -338,8 +334,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -379,8 +374,8 @@
           <velocity>5</velocity>
         </limit>
         <dynamics>
-          <damping>0.01</damping>
-          <friction>0.001</friction>
+          <damping>0.0001</damping>
+          <friction>0.0001</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -419,8 +414,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -458,8 +452,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.01</damping>
-          <friction>0.001</friction>
+          <damping>0.0001</damping>
+          <friction>0.0001</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -472,6 +466,11 @@
           </limit>
         </ode>
       </physics>
+      <sensor name='force_torque_sensor' type='force_torque'>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>1</visualize>
+      </sensor>
     </joint>
     <link name='back_motor_link'>
       <pose relative_to='back_motor_joint'>0 0 0 0 -0 0</pose>
@@ -498,8 +497,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -519,8 +517,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -620,8 +617,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.0001</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -660,8 +657,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -699,8 +695,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.03</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -739,8 +735,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -778,8 +773,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.0001</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -818,8 +813,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
@@ -857,8 +851,8 @@
           <upper>1e+16</upper>
         </limit>
         <dynamics>
-          <damping>0.005</damping>
-          <friction>0</friction>
+          <damping>0.0001</damping>
+          <friction>0.03</friction>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
         </dynamics>
@@ -897,8 +891,7 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1</mu2>
-              <fdir1>1 0 0</fdir1>
+              <mu2>1.0</mu2>
               <mu1>1.0</mu1>
             </ode>
           </friction>
