@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="dolly_world">
+    
+    <!-- GUI -->
+    <gui fullscreen='0'>
+        <camera name='user_camera'>
+            <pose>1.71108 -1.18214 0.622439 0 0.283455 2.49619</pose>
+            <view_controller>orbit</view_controller>
+            <projection_type>perspective</projection_type>
+        </camera>
+    </gui>
+
+    <!-- Scene -->
+    <scene>
+        <sky>
+            <time>10</time>
+            <sunrise>5</sunrise>
+            <sunset>21</sunset>
+            <clouds>
+            <speed>12</speed>
+            <direction>1.57079</direction>
+            </clouds>
+        </sky>
+        <grid>1</grid>
+        <origin_visual>1</origin_visual>
+    </scene>
+
+    <!-- Lights -->
+    <include>
+        <uri>model://sun</uri>
+    </include>
+
+    <!-- Coordinates  -->
+    <spherical_coordinates>
+        <latitude_deg>51.56991349023042</latitude_deg>
+        <longitude_deg>-4.033693921107272</longitude_deg>
+        <elevation>10.0</elevation>
+        <heading_deg>0</heading_deg>
+        <surface_model>EARTH_WGS84</surface_model>
+    </spherical_coordinates>
+
+    <!-- Physics: ode, bullet, simbody, dart-->
+    <physics type='ode'>
+        <max_step_size>0.001</max_step_size>
+        <ode>
+            <solver>
+                <!-- <type>world</type> -->
+                <type>quick</type>
+                <min_step_size>0.0001</min_step_size>
+                <iters>50</iters> 
+                <sor>1.3</sor>
+                <!-- <use_dynamic_moi_rescaling>true</use_dynamic_moi_rescaling> -->
+            </solver>
+            <constraints>
+                <cfm>0.001</cfm>
+                <erp>0.3</erp>
+                <contact_max_correcting_vel>10.0</contact_max_correcting_vel>
+                <contact_surface_layer>0.005</contact_surface_layer>
+            </constraints>
+        </ode>
+        <bullet>
+            <solver>
+                <type>sequential_impulse</type>
+                <min_step_size>0.0001</min_step_size>
+                <iters>50</iters>
+                <sor>1.3</sor>
+            </solver>
+            <constraints>
+                <cfm>0.01</cfm>
+                <erp>0.2</erp>
+                <contact_surface_layer>0.001</contact_surface_layer>
+                <split_impulse>true</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+            </constraints>
+        </bullet>
+        <simbody>
+            <accuracy>0.001</accuracy>
+            <max_transient_velocity>0.01</max_transient_velocity>
+            <contact>
+                <stiffness>1.0e-8</stiffness>
+                <dissipation>100</dissipation>
+                <plastic_coef_restitution>0.5</plastic_coef_restitution>
+                <plastic_impact_velocity>0.5</plastic_impact_velocity>
+                <static_friction>0.9</static_friction>
+                <dynamic_friction>0.9</dynamic_friction>
+                <viscous_friction>0</viscous_friction>
+                <override_impact_capture_velocity>0.001</override_impact_capture_velocity>
+                <override_stiction_transition_velocity>0.001</override_stiction_transition_velocity>
+            </contact>
+        </simbody>
+        <dart>
+            <solver>
+                <!-- <solver_type>PGS</solver_type> -->
+                <solver_type>dantzig</solver_type>
+            </solver>
+            <collision_detector>fcl</collision_detector>
+        </dart>
+    </physics>
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <pose>0 0 0.25 0 0 0</pose>
+      <!-- <uri>model://dolly_ball_castor_ardupilot</uri> -->
+      <uri>model://dolly_ardupilot</uri>
+    </include>
+
+  </world>
+</sdf>
