@@ -146,8 +146,8 @@ of [-45, 45] deg. The model should be updated to reflect this).
 
 ```bash
 SERVO1_FUNCTION  26 (Ground Steering)
-SERVO1_MAX       1850
-SERVO1_MIN       1150
+SERVO1_MAX       1750 (limit rotation to 45)
+SERVO1_MIN       1250 (limit rotation to 45)
 SERVO1_REVERSED  0
 SERVO1_TRIM      1500
 
@@ -229,7 +229,7 @@ Configuration and results are logged in the Excel spreadsheet: `fan_car_tuning.x
 Set a custom location for SITL to reuse the field testing missions in simulation. 
 
 ```bash
-$ gazebo --verbose worlds/fan_car_test.world
+$ gazebo --verbose worlds/fan_car.world
 ```
 
 ```bash

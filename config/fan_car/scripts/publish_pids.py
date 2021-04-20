@@ -49,12 +49,12 @@ async def main_loop():
     messages = []
 
     # topics:
-    # /dolly_ball_castor_ardupilot/dolly_ball_castor/back_motor_joint/pid
-    # /dolly_ardupilot/dolly/back_steer_rotor_joint/pid
+    # /fan_car_ball_castor_ardupilot/fan_car_ball_castor/back_motor_joint/pid
+    # /fan_car_ardupilot/fan_car/back_steer_rotor_joint/pid
     
     if False:
         publisher = await manager.advertise(
-            '/gazebo/dolly_world/dolly_ardupilot/dolly/back_motor_joint/pid',
+            '/gazebo/fan_car_world/fan_car_ardupilot/fan_car/back_motor_joint/pid',
             'gazebo.msgs.PID')
         
         message = PID()
@@ -70,7 +70,7 @@ async def main_loop():
 
     if False:
         publisher = await manager.advertise(
-            '/gazebo/dolly_world/dolly_ball_castor_ardupilot/dolly_ball_castor/back_steer_rotor_joint/pid',
+            '/gazebo/fan_car_world/fan_car_ball_castor_ardupilot/fan_car_ball_castor/back_steer_rotor_joint/pid',
             'gazebo.msgs.PID')
         
         message = PID()

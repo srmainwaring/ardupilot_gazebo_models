@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<sdf version="1.6">
-  <world name="dolly_world">
+<sdf version="1.7">
+  <world name="fan_car_world">
     
     <!-- GUI -->
     <gui fullscreen='0'>
@@ -104,8 +104,7 @@
 
     <include>
       <pose>0 0 0.25 0 0 0</pose>
-      <!-- <uri>model://dolly_ball_castor_ardupilot</uri> -->
-      <uri>model://dolly_ardupilot</uri>
+      <uri>model://fan_car_ardupilot</uri>
     </include>
 
   </world>
