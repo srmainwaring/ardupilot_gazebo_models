@@ -50,7 +50,7 @@ are used by the `ardupilot_gazebo` plugin:
     <i_gain>0.1</i_gain>
     <d_gain>0.02</d_gain>
     <i_max>1</i_max>
-    <i_min>0</i_min>
+    <i_min>-1</i_min>
     <cmd_max>100.0</cmd_max>
     <cmd_min>-100.0</cmd_min>
 </control>
@@ -207,31 +207,25 @@ WP_SPEED        1.5
 
 The purpose of the thrust stand simulation is to determine the damping and friction coefficients for the fan car motor joint and then select suitable PID controller gains in the ArduPilotGazebo plugin.
 
-### Tools
+#### `sim_ardupilot_thrust_stand.py`
 
-`ardupilot_thrust_stand.py`: a Python script used to create the SDF model for the thrust stand and launch it using the `pcg_gazebo` `GazeboProxy` class.
+A Python script using `pcg_gazebo` to create the SDF model for the thrust stand and spawn it into Gazebo.
 
-`publish_pids`: a Python script that uses `pygazebo` to publish PID messages on the Gazebo transport layer. A modiofied version of the ArduPilotGazebo plugin subscribes to these and updates the controller settings when they are received.
+#### `publish_pids.py`
 
-`Gazebo`: run using `rosrun gazebo_ros gazebo --verbose`. We run Gazebo with the ROS `gazebo_ros_pkgs` plugins enabled in verbose mode. This is so we can monitor for issues. Running the simulation using the `pcg_gazebo` process manager is better for automation, but a harder to debug.
-
-`SITL`: run `sim_vehicle.py -v Rover -f JSON --aircraft=thrust_stand`. This launches a SITL and MAVProxy session using the SITL-JSON backend. We also run the console and monitor the servo output with the graph module: 
-
-```bash
-graph SERVO_OUTPUT_RAW.servo1_raw SERVO_OUTPUT_RAW.servo3_raw
-```
-
-Configuration and results are logged in the Excel spreadsheet: `fan_car_tuning.xlsx` saved in `~/CloudStation/Projects/FanCar`
+A Python script that uses `pygazebo` to publish PID messages on the Gazebo transport layer. A modified version of the ArduPilotGazebo plugin subscribes to these and updates the controller settings when they are received (see: [srmainwaring/ardupilot_gazebo: branch feature/sitl_json_dynamic_pid](https://github.com/srmainwaring/ardupilot_gazebo/tree/feature/sitl_json_dynamic_pid))
 
 
-## Appendix B: field test location
-
-Set a custom location for SITL to reuse the field testing missions in simulation. 
+Run Gazebo with the ROS `gazebo_ros_pkgs` plugins enabled in verbose mode:
 
 ```bash
-$ gazebo --verbose worlds/fan_car.world
+$ rosrun gazebo_ros gazebo --verbose
 ```
 
-```bash
-$ sim_vehicle.py -v Rover -f JSON --custom-location="51.5716035,-4.0302578,0,10.0" --aircraft=thrust_stand --mavproxy-args "--out=udp:192.168.1.83:14550"
+
+Run SITL-JSON:
+
 ```
+$ sim_vehicle.py -v Rover -f JSON --aircraft=thrust_stand --console --map
+```
+
