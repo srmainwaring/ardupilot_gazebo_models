@@ -3,28 +3,28 @@
     <link name='base_link'>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
-        <mass>1</mass>
+        <mass>1.25</mass>
         <inertia>
-          <ixx>0.00750833</ixx>
+          <ixx>0.0093776</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.0208417</iyy>
+          <iyy>0.0166693</iyy>
           <iyz>0</iyz>
-          <izz>0.0283333</izz>
+          <izz>0.0260417</izz>
         </inertia>
       </inertial>
       <collision name='base_link_collision'>
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.5 0.3 0.01</size>
+            <size>0.4 0.3 0.005</size>
           </box>
         </geometry>
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -36,7 +36,7 @@
         <pose>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.5 0.3 0.01</size>
+            <size>0.4 0.3 0.005</size>
           </box>
         </geometry>
         <material>
@@ -50,7 +50,7 @@
       <velocity_decay/>
     </link>
     <joint name='back_left_castor_joint' type='revolute'>
-      <pose relative_to='base_link'>-0.2 0.1 0 0 -0 0</pose>
+      <pose relative_to='base_link'>-0.155 0.105 0 0 -0 0</pose>
       <parent>base_link</parent>
       <child>back_left_castor_link</child>
       <axis>
@@ -100,8 +100,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -157,14 +157,14 @@
       <pose relative_to='back_left_wheel_joint'>0 0 0 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
-        <mass>0.1</mass>
+        <mass>0.05</mass>
         <inertia>
-          <ixx>1.89583e-05</ixx>
+          <ixx>9.47917e-06</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>1.89583e-05</iyy>
+          <iyy>9.47917e-06</iyy>
           <iyz>0</iyz>
-          <izz>3.125e-05</izz>
+          <izz>1.5625e-05</izz>
         </inertia>
       </inertial>
       <collision name='back_left_castor_wheel_link_collision'>
@@ -178,8 +178,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -206,7 +206,7 @@
       <velocity_decay/>
     </link>
     <joint name='back_right_castor_joint' type='revolute'>
-      <pose relative_to='base_link'>-0.2 -0.1 0 0 -0 0</pose>
+      <pose relative_to='base_link'>-0.155 -0.105 0 0 -0 0</pose>
       <parent>base_link</parent>
       <child>back_right_castor_link</child>
       <axis>
@@ -256,8 +256,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -313,14 +313,14 @@
       <pose relative_to='back_right_wheel_joint'>0 0 0 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
-        <mass>0.1</mass>
+        <mass>0.05</mass>
         <inertia>
-          <ixx>1.89583e-05</ixx>
+          <ixx>9.47917e-06</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>1.89583e-05</iyy>
+          <iyy>9.47917e-06</iyy>
           <iyz>0</iyz>
-          <izz>3.125e-05</izz>
+          <izz>1.5625e-05</izz>
         </inertia>
       </inertial>
       <collision name='back_right_castor_wheel_link_collision'>
@@ -334,8 +334,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -362,7 +362,7 @@
       <velocity_decay/>
     </link>
     <joint name='back_steer_rotor_joint' type='revolute'>
-      <pose relative_to='base_link'>-0.2 0 0.055 0 -0 0</pose>
+      <pose relative_to='base_link'>-0.15 0 0.0525 0 -0 0</pose>
       <parent>base_link</parent>
       <child>back_steer_rotor_link</child>
       <axis>
@@ -414,8 +414,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -497,8 +497,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -517,8 +517,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -607,7 +607,7 @@
       <velocity_decay/>
     </link>
     <joint name='front_left_castor_joint' type='revolute'>
-      <pose relative_to='base_link'>0.2 0.1 0 0 -0 0</pose>
+      <pose relative_to='base_link'>0.155 0.105 0 0 -0 0</pose>
       <parent>base_link</parent>
       <child>front_left_castor_link</child>
       <axis>
@@ -657,8 +657,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -714,14 +714,14 @@
       <pose relative_to='front_left_wheel_joint'>0 0 0 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
-        <mass>0.1</mass>
+        <mass>0.05</mass>
         <inertia>
-          <ixx>1.89583e-05</ixx>
+          <ixx>9.47917e-06</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>1.89583e-05</iyy>
+          <iyy>9.47917e-06</iyy>
           <iyz>0</iyz>
-          <izz>3.125e-05</izz>
+          <izz>1.5625e-05</izz>
         </inertia>
       </inertial>
       <collision name='front_left_castor_wheel_link_collision'>
@@ -735,8 +735,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -763,7 +763,7 @@
       <velocity_decay/>
     </link>
     <joint name='front_right_castor_joint' type='revolute'>
-      <pose relative_to='base_link'>0.2 -0.1 0 0 -0 0</pose>
+      <pose relative_to='base_link'>0.155 -0.105 0 0 -0 0</pose>
       <parent>base_link</parent>
       <child>front_right_castor_link</child>
       <axis>
@@ -813,8 +813,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
@@ -870,14 +870,14 @@
       <pose relative_to='front_right_wheel_joint'>0 0 0 0 -0 0</pose>
       <inertial>
         <pose>0 0 0 0 -0 0</pose>
-        <mass>0.1</mass>
+        <mass>0.05</mass>
         <inertia>
-          <ixx>1.89583e-05</ixx>
+          <ixx>9.47917e-06</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>1.89583e-05</iyy>
+          <iyy>9.47917e-06</iyy>
           <iyz>0</iyz>
-          <izz>3.125e-05</izz>
+          <izz>1.5625e-05</izz>
         </inertia>
       </inertial>
       <collision name='front_right_castor_wheel_link_collision'>
@@ -891,8 +891,8 @@
         <surface>
           <friction>
             <ode>
-              <mu2>1.0</mu2>
-              <mu1>1.0</mu1>
+              <mu>1</mu>
+              <mu2>1</mu2>
             </ode>
           </friction>
           <contact>
