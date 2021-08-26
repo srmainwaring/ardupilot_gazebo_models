@@ -1,14 +1,601 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
 <model name='steer_bot_ardupilot'>
-    <pose>0 0 0.21 0 0 0</pose>
-
-    <include>
-        <pose>0 0 0 0 0 0</pose>
+    <!-- <include>
         <uri>model://steer_bot</uri>
-    </include>
+    </include> -->
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>5</mass>
+        <inertia>
+          <ixx>0.0416667</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.108333</iyy>
+          <iyz>0</iyz>
+          <izz>0.141667</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.3 0.1</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.3 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0 1 0</ambient>
+          <diffuse>0 1 0</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_left_steer_joint' type='revolute'>
+      <pose relative_to='base_link'>0.2 0.2 0.12 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_left_steer_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>10</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_left_steer_link'>
+      <pose relative_to='front_left_steer_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.000658333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000658333</iyy>
+          <iyz>0</iyz>
+          <izz>0.00125</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_steer_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.05</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_left_steer_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.05</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>0 0 1</ambient>
+            <diffuse>0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_left_wheel_joint' type='revolute'>
+      <pose relative_to='front_left_steer_link'>0 0 -0.12 -1.5708 0 0</pose>
+      <parent>front_left_steer_link</parent>
+      <child>front_left_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_left_wheel_link'>
+      <pose relative_to='front_left_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00303333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00303333</iyy>
+          <iyz>0</iyz>
+          <izz>0.005</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_left_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_left_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>1 0 0</ambient>
+            <diffuse>1 0 0</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_right_steer_joint' type='revolute'>
+      <pose relative_to='base_link'>0.2 -0.2 0.12 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_right_steer_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>10</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_right_steer_link'>
+      <pose relative_to='front_right_steer_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.000658333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000658333</iyy>
+          <iyz>0</iyz>
+          <izz>0.00125</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_steer_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.05</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_right_steer_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.05</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>0 0 1</ambient>
+            <diffuse>0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_right_wheel_joint' type='revolute'>
+      <pose relative_to='front_right_steer_link'>0 0 -0.12 -1.5708 0 0</pose>
+      <parent>front_right_steer_link</parent>
+      <child>front_right_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_right_wheel_link'>
+      <pose relative_to='front_right_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00303333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00303333</iyy>
+          <iyz>0</iyz>
+          <izz>0.005</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_right_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_right_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>1 0 0</ambient>
+            <diffuse>1 0 0</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='front_steer_joint' type='revolute'>
+      <pose relative_to='base_link'>0.2 0 0.12 0 -0 0</pose>
+      <parent>base_link</parent>
+      <child>front_steer_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>10</effort>
+          <velocity>5</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_steer_link'>
+      <pose relative_to='front_steer_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.000658333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000658333</iyy>
+          <iyz>0</iyz>
+          <izz>0.00125</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_steer_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.05</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='front_steer_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.02</length>
+            <radius>0.05</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0 0 0 0</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='rear_left_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.2 0.2 0 -1.5708 0 0</pose>
+      <parent>base_link</parent>
+      <child>rear_left_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_left_wheel_link'>
+      <pose relative_to='rear_left_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00303333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00303333</iyy>
+          <iyz>0</iyz>
+          <izz>0.005</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_left_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_left_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>1 0 0</ambient>
+            <diffuse>1 0 0</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='rear_right_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.2 -0.2 0 -1.5708 0 0</pose>
+      <parent>base_link</parent>
+      <child>rear_right_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_right_wheel_link'>
+      <pose relative_to='rear_right_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.00303333</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00303333</iyy>
+          <iyz>0</iyz>
+          <izz>0.005</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_right_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_right_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.08</length>
+            <radius>0.1</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>1 0 0</ambient>
+            <diffuse>1 0 0</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='rear_wheel_joint' type='revolute'>
+      <pose relative_to='base_link'>-0.2 0 0 -1.5708 0 0</pose>
+      <parent>base_link</parent>
+      <child>rear_wheel_link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-1e+16</lower>
+          <upper>1e+16</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='rear_wheel_link'>
+      <pose relative_to='rear_wheel_joint'>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <mass>0.03125</mass>
+        <inertia>
+          <ixx>9.04948e-06</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>9.04948e-06</iyy>
+          <iyz>0</iyz>
+          <izz>9.76563e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='rear_wheel_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.025</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='rear_wheel_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.04</length>
+            <radius>0.025</radius>
+          </cylinder>
+        </geometry>
+        <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <specular>0 0 0 0</specular>
+        </material>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
 
-    <plugin name="ardupilot_plugin" filename="libArduPilotPlugin.so">
+    <!-- Need the following systems
+        JointStatePublisher         publish state information for all joints
+        JointPositionController     subscribes to /model/<model_name>/joint/<joint_name>/<joint_index>/cmd_pos
+        JointController             sibscribes to /model/<model_name>/joint/<joint_name>/cmd_vel 
+    -->
+
+    <!-- plugins -->
+    <plugin name="ignition::gazebo::systems::JointStatePublisher"
+        filename="libignition-gazebo-joint-state-publisher-system.so">
+    </plugin>
+    <plugin name="ignition::gazebo::systems::ApplyJointForce"
+        filename="libignition-gazebo-apply-joint-force-system.so">
+        <joint_name>rear_left_wheel_joint</joint_name>
+    </plugin>
+    <plugin name="ignition::gazebo::systems::ApplyJointForce"
+        filename="libignition-gazebo-apply-joint-force-system.so">
+        <joint_name>rear_right_wheel_joint</joint_name>
+    </plugin>
+    <plugin name="ignition::gazebo::systems::ApplyJointForce"
+        filename="libignition-gazebo-apply-joint-force-system.so">
+        <joint_name>front_left_steer_joint</joint_name>
+    </plugin>
+    <plugin name="ignition::gazebo::systems::ApplyJointForce"
+        filename="libignition-gazebo-apply-joint-force-system.so">
+        <joint_name>front_right_steer_joint</joint_name>
+    </plugin>
+    <plugin name="ArduPilotPlugin"
+        filename="libArduPilotPlugin.so">
         <!-- Port settings -->
         <fdm_addr>127.0.0.1</fdm_addr>
         <fdm_port_in>9002</fdm_port_in>
@@ -17,7 +604,7 @@
         <gazeboXYZToNED>0 0 0 3.141593 0 0</gazeboXYZToNED>
 
         <!-- Sensors -->
-        <imuName>steer_bot_ardupilot::imu_link::imu_sensor</imuName>
+        <imuName>imu_sensor</imuName>
 
         <!-- Control / channels -->
 
@@ -25,7 +612,7 @@
             SERVO1_FUNCTION 94 (Script 1)
         -->
         <control channel="0">
-            <jointName>steer_bot_ardupilot::steer_bot::rear_left_wheel_joint</jointName>
+            <jointName>rear_left_wheel_joint</jointName>
             <useForce>1</useForce>
             <multiplier>100.0</multiplier>
             <offset>-0.5</offset>
@@ -41,11 +628,11 @@
             <cmd_min>-50.0</cmd_min>
         </control>
 
-        <!--           
+        <!--
             SERVO2_FUNCTION 95 (Script 2)
         -->
         <control channel="1">
-            <jointName>steer_bot_ardupilot::steer_bot::rear_right_wheel_joint</jointName>
+            <jointName>rear_right_wheel_joint</jointName>
             <useForce>1</useForce>
             <multiplier>100.0</multiplier>
             <offset>-0.5</offset>
@@ -60,12 +647,12 @@
             <cmd_max>50.0</cmd_max>
             <cmd_min>-50.0</cmd_min>
         </control>
-        
-        <!--           
+
+        <!--
             SERVO3_FUNCTION 96 (Script 3)
         -->
         <control channel="2">
-            <jointName>steer_bot_ardupilot::steer_bot::front_left_steer_joint</jointName>
+            <jointName>front_left_steer_joint</jointName>
             <useForce>1</useForce>
             <multiplier>1.570796327</multiplier>
             <offset>-0.5</offset>
@@ -77,15 +664,15 @@
             <d_gain>0.1</d_gain>
             <i_max>1</i_max>
             <i_min>0</i_min>
-            <cmd_max>0.785398163</cmd_max>
-            <cmd_min>-0.785398163</cmd_min>
+            <cmd_max>2.0</cmd_max>
+            <cmd_min>-2.0</cmd_min>
         </control>
 
-        <!--           
+        <!--
             SERVO4_FUNCTION 97 (Script 4)
         -->
         <control channel="3">
-            <jointName>steer_bot_ardupilot::steer_bot::front_right_steer_joint</jointName>
+            <jointName>front_right_steer_joint</jointName>
             <useForce>1</useForce>
             <multiplier>1.570796327</multiplier>
             <offset>-0.5</offset>
@@ -97,13 +684,148 @@
             <d_gain>0.1</d_gain>
             <i_max>1</i_max>
             <i_min>0</i_min>
-            <cmd_max>0.785398163</cmd_max>
-            <cmd_min>-0.785398163</cmd_min>
+            <cmd_max>2.0</cmd_max>
+            <cmd_min>-2.0</cmd_min>
         </control>
 
+        <!-- Sonar sensor -->
+        <!-- 
+            Types
+            =====
+            Use the same type identifier as used in the sensor
+            SDF element:
+            http://sdformat.org/spec?ver=1.7&elem=sensor
+            type = air_pressure, altimeter, camera, depth_camera,
+            force_torque, gps, lidar, magnetometer, sonar  
+            
+            Topics
+            ======
+            The topic will be prefixed with the gazebo namespace
+            and model name:
+            
+            ~/<model_name>/
+            
+            e.g. /gazebo/default/steer_bot_ardupilot/
+            
+            Index
+            =====
+            The sensor::type and sensor::index element are used
+            to associate the sensor with the ArduPilot parameter group that
+            defines the sensor properties such as its position and orientation
+            in the frame.
+         -->
+         <!-- 
+            RNGFND1_TYPE = 100 (SITL)
+            RNGFND1_FUNCTION = 0 (LINEAR)
+            RNGFND1_MIN_CM = 20 (0.2 m)
+            RNGFND1_MAX_CM = 700 (7.0 m)
+            RNGFND1_POS_X = 0.25
+            RNGFND1_POS_Y = 0.0
+            RNGFND1_POS_Z = -0.05
+            RNGFND1_ORIENT = 0 (Forward)
+        -->
+        <sensor>
+            <type>sonar</type>
+            <index>1</index>
+            <topic>sonar_forward_link/sensor/sonar</topic>
+        </sensor>
 
+         <!-- 
+            RNGFND2_TYPE = 100 (SITL)
+            RNGFND2_FUNCTION = 0 (LINEAR)
+            RNGFND2_MIN_CM = 20 (0.2 m)
+            RNGFND2_MAX_CM = 700 (7.0 m)
+            RNGFND2_POS_X = 0.25
+            RNGFND2_POS_Y = -0.15
+            RNGFND2_POS_Z = -0.05
+            RNGFND2_ORIENT = 7 (Forward-Left)
+        -->
+        <!-- <sensor>
+            <type>sonar</type>
+            <index>2</index>
+            <topic>sonar_forward_left/sonar_link/sensor/sonar</topic>
+        </sensor> -->
+
+        <!-- Do not register left sensor -->
+        <!-- <sensor>
+            <type>sonar</type>
+            <index>3</index>
+            <topic>sonar_left/sonar_link/sensor/sonar</topic>
+        </sensor> -->
+
+         <!-- 
+            RNGFND3_TYPE = 100 (SITL)
+            RNGFND3_FUNCTION = 0 (LINEAR)
+            RNGFND3_MIN_CM = 20 (0.2 m)
+            RNGFND3_MAX_CM = 700 (7.0 m)
+            RNGFND3_POS_X = -0.25
+            RNGFND3_POS_Y = -0.15
+            RNGFND3_POS_Z = -0.05
+            RNGFND3_ORIENT = 5 (Back-Left)
+        -->
+        <!-- <sensor>
+            <type>sonar</type>
+            <index>3</index>
+            <topic>sonar_back_left/sonar_link/sensor/sonar</topic>
+        </sensor> -->
+
+         <!-- 
+            RNGFND4_TYPE = 100 (SITL)
+            RNGFND4_FUNCTION = 0 (LINEAR)
+            RNGFND4_MIN_CM = 20 (0.2 m)
+            RNGFND4_MAX_CM = 700 (7.0 m)
+            RNGFND4_POS_X = -0.25
+            RNGFND4_POS_Y = 0.0
+            RNGFND4_POS_Z = -0.05
+            RNGFND4_ORIENT = 4 (Back)
+        -->
+        <sensor>
+            <type>sonar</type>
+            <index>4</index>
+            <topic>sonar_back_link/sensor/sonar</topic>
+        </sensor>
+
+         <!-- 
+            RNGFND5_TYPE = 100 (SITL)
+            RNGFND5_FUNCTION = 0 (LINEAR)
+            RNGFND5_MIN_CM = 20 (0.2 m)
+            RNGFND5_MAX_CM = 700 (7.0 m)
+            RNGFND5_POS_X = -0.25
+            RNGFND5_POS_Y = 0.15
+            RNGFND5_POS_Z = -0.05
+            RNGFND5_ORIENT = 3 (Back-Right)
+        -->
+        <!-- <sensor>
+            <type>sonar</type>
+            <index>5</index>
+            <topic>sonar_back_right/sonar_link/sensor/sonar</topic>
+        </sensor> -->
+
+        <!-- Do not register right sensor -->
+        <!-- <sensor>
+            <type>sonar</type>
+            <index>7</index>
+            <topic>sonar_right/sonar_link/sensor/sonar</topic>
+        </sensor> -->
+
+         <!-- 
+            RNGFND6_TYPE = 100 (SITL)
+            RNGFND6_FUNCTION = 0 (LINEAR)
+            RNGFND6_MIN_CM = 20 (0.2 m)
+            RNGFND6_MAX_CM = 700 (7.0 m)
+            RNGFND6_POS_X = 0.25
+            RNGFND6_POS_Y = 0.15
+            RNGFND6_POS_Z = -0.05
+            RNGFND6_ORIENT = 1 (Forward-Right)
+        -->
+        <!-- <sensor>
+            <type>sonar</type>
+            <index>6</index>
+            <topic>sonar_forward_right/sonar_link/sensor/sonar</topic>
+        </sensor> -->
     </plugin>
 
+    <!-- IMU -->
     <link name='imu_link'>
         <inertial>
             <mass>0.01</mass>
@@ -123,9 +845,236 @@
         </sensor>
     </link>
 
-    <joint name='imu_joint' type='fixed'>
+    <!-- A fixed joint is unstable - too much vibration for IMU -->
+    <joint name='imu_joint' type='revolute'>
         <child>imu_link</child>
-        <parent>steer_bot_ardupilot::steer_bot::base_link</parent>
+        <parent>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+                <lower>0</lower>
+                <upper>0</upper>
+                <effort>0</effort>
+                <velocity>0</velocity>
+            </limit>
+            <dynamics>
+                <spring_reference>0</spring_reference>
+                <spring_stiffness>0</spring_stiffness>
+            </dynamics>
+            <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
     </joint>
+
+    <!-- Camera -->
+    <link name='camera_link'>
+        <pose>0.26 0 0 0 0 0</pose>
+        <inertial>
+            <mass>0.1</mass>
+            <inertia>
+                <ixx>0.000166667</ixx>
+                <iyy>0.000166667</iyy>
+                <izz>0.000166667</izz>
+            </inertia>
+        </inertial>
+        <collision name="collision">
+            <geometry>
+                <box>
+                    <size>0.01 0.1 0.05</size>
+                </box>
+            </geometry>
+        </collision>
+        <visual name="visual">
+            <geometry>
+                <box>
+                    <size>0.01 0.1 0.05</size>
+                </box>
+            </geometry>
+        </visual>
+        <sensor name="camera" type="camera">
+            <camera>
+                <horizontal_fov>1.047</horizontal_fov>
+                <image>
+                    <width>320</width>
+                    <height>240</height>
+                </image>
+                <clip>
+                    <near>0.1</near>
+                    <far>100</far>
+                </clip>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+            <visualize>true</visualize>
+        </sensor>
+    </link>
+
+    <joint name='camera_joint' type='revolute'>
+        <child>camera_link</child>
+        <parent>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+                <lower>0</lower>
+                <upper>0</upper>
+                <effort>0</effort>
+                <velocity>0</velocity>
+            </limit>
+            <dynamics>
+                <damping>1.0</damping>
+            </dynamics>
+            <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+        <physics>
+            <ode>
+                <implicit_spring_damper>1</implicit_spring_damper>
+            </ode>
+        </physics>
+    </joint>
+
+    <!-- RangeFinder -->
+    <link name='sonar_front_link'>
+        <pose>0.245 0 0.055 0 0 0</pose>
+        <inertial>
+            <mass>0.1</mass>
+            <inertia>
+                <ixx>0.000166667</ixx>
+                <iyy>0.000166667</iyy>
+                <izz>0.000166667</izz>
+            </inertia>
+        </inertial>
+        <collision name="collision">
+            <geometry>
+                <box>
+                    <size>0.01 0.01 0.01</size>
+                </box>
+            </geometry>
+        </collision>
+        <visual name="visual">
+            <geometry>
+                <box>
+                    <size>0.01 0.01 0.01</size>
+                </box>
+            </geometry>
+        </visual>
+        <sensor name='gpu_lidar' type='gpu_lidar'>
+            <topic>sonar_front_link/sensor/sonar</topic>
+            <update_rate>10</update_rate>
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>8</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.261799</min_angle>
+                        <max_angle>0.261799</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>8</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.261799</min_angle>
+                        <max_angle>0.261799</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.08</min>
+                    <max>10.0</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </lidar>
+            <alwaysOn>1</alwaysOn>
+            <visualize>true</visualize>
+        </sensor>
+    </link>
+
+    <joint name='sonar_front_joint' type='revolute'>
+        <child>sonar_front_link</child>
+        <parent>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+                <lower>0</lower>
+                <upper>0</upper>
+                <effort>0</effort>
+                <velocity>0</velocity>
+            </limit>
+            <dynamics>
+                <spring_reference>0</spring_reference>
+                <spring_stiffness>0</spring_stiffness>
+            </dynamics>
+            <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+    </joint>
+
+    <link name='sonar_back_link'>
+        <pose>-0.245 0 0.055 0 0 3.1415926</pose>
+        <inertial>
+            <mass>0.1</mass>
+            <inertia>
+                <ixx>0.000166667</ixx>
+                <iyy>0.000166667</iyy>
+                <izz>0.000166667</izz>
+            </inertia>
+        </inertial>
+        <collision name="collision">
+            <geometry>
+                <box>
+                    <size>0.01 0.01 0.01</size>
+                </box>
+            </geometry>
+        </collision>
+        <visual name="visual">
+            <geometry>
+                <box>
+                    <size>0.01 0.01 0.01</size>
+                </box>
+            </geometry>
+        </visual>
+        <sensor name='gpu_lidar' type='gpu_lidar'>
+            <topic>sonar_back_link/sensor/sonar</topic>
+            <update_rate>10</update_rate>
+            <lidar>
+                <scan>
+                    <horizontal>
+                        <samples>8</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.261799</min_angle>
+                        <max_angle>0.261799</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>8</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.261799</min_angle>
+                        <max_angle>0.261799</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.08</min>
+                    <max>10.0</max>
+                    <resolution>0.01</resolution>
+                </range>
+            </lidar>
+            <alwaysOn>1</alwaysOn>
+            <visualize>true</visualize>
+        </sensor>
+    </link>
+
+    <joint name='sonar_back_joint' type='revolute'>
+        <child>sonar_back_link</child>
+        <parent>base_link</parent>
+        <axis>
+            <xyz>0 0 1</xyz>
+            <limit>
+                <lower>0</lower>
+                <upper>0</upper>
+                <effort>0</effort>
+                <velocity>0</velocity>
+            </limit>
+            <dynamics>
+                <spring_reference>0</spring_reference>
+                <spring_stiffness>0</spring_stiffness>
+            </dynamics>
+            <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+    </joint>
+
 </model>
 </sdf>
