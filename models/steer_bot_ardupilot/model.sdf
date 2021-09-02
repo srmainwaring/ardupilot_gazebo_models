@@ -727,7 +727,7 @@
         <sensor>
             <type>sonar</type>
             <index>1</index>
-            <topic>sonar_forward_link/sensor/sonar</topic>
+            <topic>sonar_front_link/sensor/sonar</topic>
         </sensor>
 
          <!-- 
@@ -743,7 +743,7 @@
         <!-- <sensor>
             <type>sonar</type>
             <index>2</index>
-            <topic>sonar_forward_left/sonar_link/sensor/sonar</topic>
+            <topic>sonar_front_left/sonar_link/sensor/sonar</topic>
         </sensor> -->
 
         <!-- Do not register left sensor -->
@@ -781,7 +781,8 @@
         -->
         <sensor>
             <type>sonar</type>
-            <index>4</index>
+            <index>2</index>
+            <!-- <index>4</index> -->
             <topic>sonar_back_link/sensor/sonar</topic>
         </sensor>
 
@@ -821,7 +822,7 @@
         <!-- <sensor>
             <type>sonar</type>
             <index>6</index>
-            <topic>sonar_forward_right/sonar_link/sensor/sonar</topic>
+            <topic>sonar_front_right/sonar_link/sensor/sonar</topic>
         </sensor> -->
     </plugin>
 
@@ -968,9 +969,11 @@
                         <max_angle>0.261799</max_angle>
                     </horizontal>
                     <vertical>
-                        <samples>8</samples>
+                        <samples>4</samples>
                         <resolution>1</resolution>
-                        <min_angle>-0.261799</min_angle>
+                        <min_angle>0</min_angle>
+                        <!-- <max_angle>0</max_angle> -->
+                        <!-- <min_angle>-0.261799</min_angle> -->
                         <max_angle>0.261799</max_angle>
                     </vertical>
                 </scan>
@@ -1040,9 +1043,11 @@
                         <max_angle>0.261799</max_angle>
                     </horizontal>
                     <vertical>
-                        <samples>8</samples>
+                        <samples>4</samples>
                         <resolution>1</resolution>
-                        <min_angle>-0.261799</min_angle>
+                        <min_angle>0</min_angle>
+                        <!-- <max_angle>0</max_angle> -->
+                        <!-- <min_angle>-0.261799</min_angle> -->
                         <max_angle>0.261799</max_angle>
                     </vertical>
                 </scan>
