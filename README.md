@@ -1,5 +1,13 @@
 # ArduPilot Gazebo Models
 
+## Note
+
+This repository is archived. The models can now be found at
+[ArduPilot/SITL_Models](https://github.com/ArduPilot/SITL_Models).
+
+---
+
+
 Gazebo models that can be controlled with ArduPilot using the ArduPilot Gazebo plugin
 ([khancyr/ardupilot_gazebo](https://github.com/khancyr/ardupilot_gazebo)).
 
